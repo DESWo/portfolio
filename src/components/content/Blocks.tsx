@@ -262,9 +262,10 @@ function BlockView({
 
     case 'metrics':
       return (
-        // A 1px ring per cell rather than gaps over a coloured container, so
-        // any number of metrics tiles cleanly. See Engineering.tsx.
-        <dl className="grid sm:grid-cols-3">
+        // Auto-fit rather than a fixed three columns, so two metrics fill the
+        // width instead of stopping two-thirds of the way across. A 1px ring
+        // per cell draws the dividers — see the note in Engineering.tsx.
+        <dl className="grid sm:grid-cols-[repeat(auto-fit,minmax(9rem,1fr))]">
           {block.items.map((item, i) => (
             <div key={i} className="px-5 py-6 shadow-[0_0_0_1px_var(--rule)]">
               <dd className="text-[1.75rem] leading-none font-semibold text-ink tabular">
