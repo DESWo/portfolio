@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="DW">
+  <rect width="32" height="32" fill="#17181A"/>
+  <g fill="none" stroke="#E08A4E" stroke-width="2">
+    <ellipse cx="16" cy="16" rx="11" ry="5.5" transform="rotate(-30 16 16)"/>
+    <ellipse cx="16" cy="16" rx="11" ry="5.5" transform="rotate(30 16 16)"/>
+  </g>
+  <circle cx="16" cy="16" r="3.6" fill="#E08A4E"/>
+</svg>

@@ -1,0 +1,65 @@
+name: Deploy to GitHub Pages
+
+# Builds the site and publishes it on every push to main. Editing a file in
+# src/data and pushing is the entire publish workflow.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one deploy at a time; a newer push cancels an in-flight build.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # The check and sitemap scripts import the .ts data files directly,
+          # which needs Node's built-in type stripping (22.18+).
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      # Content integrity: dangling slugs, missing images, malformed tables.
+      # This runs before the build so a broken link fails here rather than
+      # shipping. `deploy` needs `build`, so nothing goes live on a red check.
+      - run: npm run check
+
+      # Keep sitemap.xml and robots.txt in step with the content that just
+      # passed the check.
+      - run: npm run sitemap
+
+      # `npm run build` is `tsc -b && vite build`, so this is the typecheck too.
+      - run: npm run build
+
+      # GitHub Pages has no SPA fallback. Copying index.html to 404.html makes
+      # Pages serve the app for a deep link like /projects/radiant, and the
+      # router then renders the right page.
+      - run: cp dist/index.html dist/404.html
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

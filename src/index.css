@@ -1,0 +1,430 @@
+/* ===========================================================================
+   The design system.
+
+   Three typefaces with strict jobs:
+     Inter      interface, headings, navigation
+     Literata   long-form reading — case-study and research prose
+     Geist Mono labels, figure numbers, metadata, anything measured
+
+   The font files live in src/assets/fonts and are served from this site. No
+   request ever leaves for a font, and there is no font dependency in
+   package.json. Only the Latin and Greek subsets are shipped — Greek because
+   the equations use σ and τ. Anything outside those ranges (Cyrillic, CJK)
+   falls back to a system font rather than being downloaded, which is the right
+   trade for a site written in English.
+
+   Colour is defined once as semantic custom properties, twice (light and
+   dark), and then handed to Tailwind by reference. To restyle the whole site,
+   change the values in :root and [data-theme='dark'] below and nothing else.
+   =========================================================================== */
+
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Fonts. The unicode-range on each rule is what stops a visitor downloading
+   the Greek file to read an English page.
+   --------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('./assets/fonts/inter-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('./assets/fonts/inter-latin-ext-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113,
+    U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('./assets/fonts/inter-greek-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+
+@font-face {
+  font-family: 'Literata Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 900;
+  src: url('./assets/fonts/literata-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Literata Variable';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 200 900;
+  src: url('./assets/fonts/literata-latin-wght-italic.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Literata Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 900;
+  src: url('./assets/fonts/literata-latin-ext-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113,
+    U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Literata Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 900;
+  src: url('./assets/fonts/literata-greek-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('./assets/fonts/geist-mono-latin-400-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url('./assets/fonts/geist-mono-latin-500-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Dark mode is an explicit attribute on <html>, not a media query, so the
+   toggle in the header can override the operating system in both directions. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/* ---------------------------------------------------------------------------
+   PALETTE — light
+   Warm paper, cool ink, one copper accent. Every pairing used for text has
+   been checked against WCAG AA (4.5:1); the faint tone sits at 4.6:1 and is
+   the lightest text allowed anywhere on the site.
+   --------------------------------------------------------------------------- */
+:root {
+  --paper: #fbfaf8;
+  /* Used for anything set into the page: code blocks, callouts, image plates. */
+  --paper-sunken: #f3f1ed;
+  --ink: #17181a;
+  --ink-muted: #55585e;
+  --ink-faint: #6e7278;
+  --rule: #dfdcd6;
+  --rule-strong: #c6c2ba;
+  --accent: #a8451d;
+  --selection: #f2ded1;
+
+  --content-width: 74rem;
+  --prose-width: 42rem;
+
+  color-scheme: light;
+}
+
+/* ---------------------------------------------------------------------------
+   PALETTE — dark
+   --------------------------------------------------------------------------- */
+[data-theme='dark'] {
+  --paper: #101113;
+  /* Slightly lighter than the page in dark mode: a darker panel reads as a
+     hole punched in the layout rather than a surface set into it. */
+  --paper-sunken: #17191c;
+  --ink: #eceae6;
+  --ink-muted: #a2a5ab;
+  --ink-faint: #8a8f97;
+  --rule: #26292e;
+  --rule-strong: #3a3e45;
+  --accent: #e08a4e;
+  --selection: #43301f;
+
+  color-scheme: dark;
+}
+
+/* ---------------------------------------------------------------------------
+   Hand the palette to Tailwind. `inline` keeps the var() reference in the
+   generated utility, which is what makes `bg-paper` follow the theme.
+   --------------------------------------------------------------------------- */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-sunken: var(--paper-sunken);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-accent: var(--accent);
+
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Literata Variable', ui-serif, Georgia, Cambria, 'Times New Roman', serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, monospace;
+
+  /* Fluid display sizes. The clamp middle term is the viewport-scaled value;
+     the outer terms stop it collapsing on a phone or ballooning on a monitor. */
+  --text-display: clamp(2.5rem, 1.4rem + 4.6vw, 4.5rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.03em;
+
+  --text-title: clamp(1.9rem, 1.35rem + 2.2vw, 3rem);
+  --text-title--line-height: 1.08;
+  --text-title--letter-spacing: -0.022em;
+
+  --text-heading: clamp(1.35rem, 1.15rem + 0.85vw, 1.85rem);
+  --text-heading--line-height: 1.2;
+  --text-heading--letter-spacing: -0.015em;
+
+  --text-lead: clamp(1.06rem, 0.98rem + 0.4vw, 1.3rem);
+  --text-lead--line-height: 1.6;
+}
+
+/* ---------------------------------------------------------------------------
+   Base elements
+   --------------------------------------------------------------------------- */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--rule);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    /* Clears the sticky header when jumping to an anchor. */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--selection);
+    color: var(--ink);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* One focus style for the whole site: a clear ring, never removed. */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Tables inherit the hairline language rather than bringing their own. */
+  table {
+    border-collapse: collapse;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Numbers line up in columns wherever they are compared. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Components used in more than one place
+   --------------------------------------------------------------------------- */
+@layer components {
+  /* The small mono label that sits above a heading. */
+  .overline {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* Long-form reading. Applied to case-study and research bodies. */
+  .prose-body {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    line-height: 1.72;
+    color: var(--ink-muted);
+    font-optical-sizing: auto;
+  }
+
+  .prose-body strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .prose-body a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .prose-body a:hover {
+    color: var(--accent);
+  }
+
+  @media (min-width: 48rem) {
+    .prose-body {
+      font-size: 1.125rem;
+    }
+  }
+
+  /* An inline link in interface text. */
+  .link {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--rule-strong);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition:
+      color 150ms ease,
+      text-decoration-color 150ms ease;
+  }
+
+  .link:hover {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+  }
+
+  /* Route transition. Short and small — a page that slides a long way reads
+     as slow, and this fires on every single navigation. */
+  @keyframes page-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.4rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .page-enter {
+    animation: page-in 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* The case-study article.
+     Prose sits on a comfortable reading measure; figures, tables and galleries
+     can step out to the full width of the column without any negative-margin
+     tricks. Named grid lines do the whole job. */
+  .article-grid {
+    display: grid;
+    /* The text lane is left-aligned rather than centred, so headings, prose,
+       tables and figures all share one left edge. Wide blocks simply run on
+       into the second track. */
+    grid-template-columns:
+      [full-start text-start] min(100%, var(--prose-width)) [text-end]
+      minmax(0, 1fr) [full-end];
+    row-gap: 1.75rem;
+  }
+
+  .article-grid > * {
+    grid-column: text;
+    min-width: 0;
+  }
+
+  .article-grid > [data-width='wide'],
+  .article-grid > [data-width='full'] {
+    grid-column: full;
+  }
+
+  /* Scroll reveal. The element is only offset while it is waiting; once
+     revealed the transform is removed entirely so nothing stays composited. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(0.75rem);
+    transition:
+      opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .reveal[data-revealed='true'] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Reduced motion. Anything that moves is turned off, and anything that fades
+   in is shown immediately — never left invisible.
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Print: the case studies should come out of a printer looking like a report.
+   --------------------------------------------------------------------------- */
+@media print {
+  [data-print='hide'] {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.75em;
+    color: #444;
+  }
+}

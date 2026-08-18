@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--
+      These tags are the defaults for the first paint and for any crawler that
+      does not run JavaScript. Every route replaces them at runtime via
+      src/hooks/usePageMeta.ts. Keep them in step with src/data/site.ts.
+    -->
+    <title>Desmond Wong — Engineering Portfolio</title>
+    <meta
+      name="description"
+      content="Engineering portfolio of Desmond Wong: nuclear and fusion energy, physical simulation, and the models and sources behind them."
+    />
+    <meta name="author" content="Desmond Wong" />
+    <link rel="canonical" href="https://deswo.github.io/portfolio/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Desmond Wong" />
+    <meta property="og:title" content="Desmond Wong — Engineering Portfolio" />
+    <meta
+      property="og:description"
+      content="Nuclear and fusion energy, physical simulation, and the models and sources behind them."
+    />
+    <meta property="og:url" content="https://deswo.github.io/portfolio/" />
+    <meta property="og:image" content="https://deswo.github.io/portfolio/og-card.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Absolute, not './favicon.svg': a relative path resolves against the
+         current directory, so it would 404 on a deep link like
+         /portfolio/projects/radiant. Vite rewrites this with the base path. -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#fbfaf8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#101113" media="(prefers-color-scheme: dark)" />
+
+    <script>
+      // Set the theme before first paint so the page never flashes the wrong
+      // one. Mirrors src/hooks/useTheme.ts — if you change the storage key or
+      // the default there, change it here too.
+      ;(function () {
+        try {
+          var saved = localStorage.getItem('dw:theme')
+          var dark =
+            saved === 'dark' ||
+            ((saved === 'system' || saved === null) &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches)
+          document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light')
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'light')
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <p style="font-family: system-ui, sans-serif; padding: 2rem; max-width: 40rem">
+        This portfolio needs JavaScript to render. The projects it describes are all
+        available directly on GitHub at
+        <a href="https://github.com/DESWo">github.com/DESWo</a>.
+      </p>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
