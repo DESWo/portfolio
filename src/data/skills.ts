@@ -50,6 +50,11 @@ export const skillGroups: SkillGroup[] = [
         evidence: ['engineering-explorer', 'principles-of-engineering'],
       },
       {
+        name: 'Materials testing',
+        note: 'Reading stress–strain curves for yield point, ultimate strength, modulus of elasticity and modulus of resilience.',
+        evidence: ['principles-of-engineering'],
+      },
+      {
         name: 'Digital logic',
         note: 'Combinational and sequential design, K-mapping, Boolean minimisation, universal-gate implementation.',
         evidence: ['digital-electronics'],
@@ -89,8 +94,8 @@ export const skillGroups: SkillGroup[] = [
       },
       {
         name: 'Statistical analysis',
-        note: 'Chi-square testing, standard deviation, and testing enough samples to tell a real difference from spread.',
-        evidence: ['intro-engineering-design'],
+        note: 'Chi-square goodness-of-fit against a stated null hypothesis, standard deviation, and testing enough samples to tell a real difference from spread.',
+        evidence: ['principles-of-engineering', 'intro-engineering-design'],
       },
       {
         name: 'Model validation',

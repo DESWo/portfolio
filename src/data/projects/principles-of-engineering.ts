@@ -3,10 +3,10 @@ import type { Project } from '../types.ts'
 export const principlesOfEngineering: Project = {
   slug: 'principles-of-engineering',
   title: 'Principles of Engineering',
-  subtitle: 'Trusses, hydraulics, robotics and thermal design',
+  subtitle: 'Trusses, materials, hydraulics, robotics and statistics',
   summary:
-    'A year of physical builds with a number attached to each one: a balsa truss bridge optimised for force-to-weight, a syringe-hydraulic claw, VEX robots in Python, and an insulation panel validated with probe testing.',
-  categories: ['mechanical', 'civil', 'electrical', 'cad'],
+    'A year of builds with a number attached to each one: balsa trusses tested to destruction and compared by load per gram, materials pulled apart in tension, syringe hydraulics, VEX robotics, and a chi-square test on a case of sweets.',
+  categories: ['mechanical', 'civil', 'electrical', 'cad', 'data'],
   status: 'complete',
   date: '2024 – 2025',
   sortDate: '2024-08',
@@ -17,59 +17,176 @@ export const principlesOfEngineering: Project = {
     'VEX V5',
     'Python',
     'Syringe hydraulics',
-    'Vernier probes',
+    'Solenoids & relays',
+    'Google Sheets',
+  ],
+  achievements: [
+    'Tested three truss designs to destruction and ranked them by load per gram — our own design came last, which is where the useful conclusions came from.',
+    'Cut pinball control code from over 700 lines to 125 by extracting functions and loops, with no change in behaviour.',
+    'Identified which factory produced a 48-pack case of sweets with a chi-square goodness-of-fit test.',
   ],
 
   caseStudy: {
     summary:
-      'Second year of the PLTW sequence, and the first one where every project had a measurable target rather than just a working/not-working outcome.',
+      'Second year of the PLTW sequence, and the first one where every project had a measurable target rather than a working/not-working outcome. It was also the year I learned that finishing is a skill, because twice I did not.',
     facts: [
       { label: 'Course', value: 'PLTW Principles of Engineering — Year 2' },
       { label: 'School', value: 'Diamond Bar High School' },
       { label: 'Year', value: '2024 – 2025' },
+      { label: 'Team size', value: 'Group projects throughout' },
     ],
     sections: [
       {
-        title: 'Ten designs before one bridge',
-        kicker: 'Structures',
+        title: 'Ten trusses before one bridge',
+        kicker: 'Analysis',
         blocks: [
           {
             kind: 'text',
-            text: 'Ten truss configurations were modelled in MDSolids before anything was cut. Analysing them first is the point of the exercise: the software shows you which members go into tension and which into compression, and by how much, so you can see a design fail on screen instead of finding out on the test rig.',
+            text: 'Ten truss configurations were modelled in MDSolids before anything was cut. Analysing first is the point of the exercise: the software gives you the force in every member and its sign, so you can watch a design fail on screen instead of on the test rig.',
           },
           {
             kind: 'text',
-            text: 'The chosen design was then calculated by hand and built from balsa, optimised for force-to-weight efficiency under a strict weight limit. That constraint is what makes the problem real — a bridge that carries the load is easy, and a bridge that carries the load while weighing almost nothing is a structural argument about where material actually needs to be.',
+            text: 'We chose a Pratt truss for the bridge — the forces came out close to evenly distributed across the members, and it was simple enough to build accurately, which turned out to matter more than we expected. The brief was a symmetrical bridge, two identical trusses 1.5 inches apart, under twenty grams, in balsa with the provided wood glue. We went with a 16-inch base over a 14-inch one because the longer stock bent less.',
           },
+          // TODO(Desmond): check truss 2's mass against your notebook. The
+          // table there records 3.91 g with an efficiency of 3.19, but
+          // 10.17 / 3.91 is 2.60 — the efficiency you wrote only works out if
+          // the mass was 3.19 g. I have used 3.19 here so the row divides
+          // correctly. Confirm which number is the typo before anyone reads it.
           {
-            kind: 'equation',
-            expression: 'efficiency = F_max / W',
-            where: [
-              { symbol: 'F_max', meaning: 'load at failure' },
-              { symbol: 'W', meaning: 'mass of the structure' },
-            ],
+            kind: 'table',
             caption:
-              'The figure the whole build was tuned against. Adding material almost always raises F_max and always raises W, so every decision is a trade rather than an improvement.',
+              'Three trusses tested to failure on the structural stress analyser. Efficiency is load at failure divided by mass, so it is a measure of how well the material was placed rather than how much of it there was.',
+            columns: ['Truss', 'Mass (g)', 'Load at failure (lb)', 'Efficiency (lb/g)'],
+            rows: [
+              ['1 — prescribed design', '2.40', '6.78', '2.82'],
+              ['2 — prescribed design', '3.19', '10.17', '3.19'],
+              ['3 — our own design', '12.74', '9.40', '0.74'],
+            ],
+          },
+          {
+            kind: 'callout',
+            tone: 'caution',
+            title: 'Our design was the worst of the three',
+            text: 'It carried a middling load and weighed more than five times what the best one did, so it finished with roughly a quarter of the efficiency. That is the whole lesson of the unit in one row: adding material almost always raises the failure load and always raises the mass, and only one of those is free.',
+          },
+          {
+            kind: 'text',
+            text: 'The two conclusions we drew from the tests were that shorter members are stronger, because there is less length in which the wood can buckle or split, and that more members beat fewer, because the load spreads and no single member carries enough to fail. Both point the same way, toward a denser lattice of short members rather than a sparse one of long ones — which is what the winning team had, and what I would build next time.',
+          },
+          {
+            kind: 'text',
+            text: 'We predicted failure in the upper members where the calculated forces concentrated. It did break near there, and it also broke towards the bottom, which we had not expected.',
           },
         ],
       },
       {
-        title: 'Pressure, and printed parts',
-        kicker: 'Mechanisms',
+        title: 'What balsa taught me',
+        kicker: 'Fabrication',
         blocks: [
           {
             kind: 'text',
-            text: 'A hydraulic claw machine driven by syringe hydraulics and a scissor-lift mechanism. Pascal’s law does the work: pressure applied to a confined fluid is transmitted undiminished, so a small force over a large piston area becomes a large force at the claw. The custom parts were modelled in Fusion 360 and 3D printed, which was the first time a dimension being wrong in CAD cost me an hour of printing rather than a minute of redrawing.',
+            text: 'The analysis was the easy half. Building a truss accurately out of 3/32-inch balsa is a manual skill, and I did not have it yet.',
+          },
+          {
+            kind: 'list',
+            items: [
+              'Measuring and cutting was the biggest time sink — pieces came out too long or too short repeatedly, wasting both the stock and the period. Once a piece was right it was easy to replicate, which should have told me to make a cutting template far sooner than I did.',
+              'Box cutters were the wrong tool. A vertical blade cut balsa far more cleanly and accurately, and switching to one changed the quality of every joint after that.',
+              'Glue discipline matters in both directions. Too little and the joint fails below the strength of the wood; too much and you have simply added mass, which is the one thing the efficiency score punishes. Another team lost on weight for exactly that reason.',
+              'Peeling the finished truss off its paper template cracked the bottom chord in the middle — the worst possible place. We replaced the whole 16-inch member rather than gluing the crack, because a repaired joint at mid-span is where it would have failed anyway.',
+              'The cross supports dried short and crooked, so we cut them off and built a VEX jig to hold the next set square while the glue set. That worked. Then we glued the second truss on backwards, and the finished bridge had its two trusses mirrored rather than matched.',
+            ],
           },
         ],
       },
       {
-        title: 'Robots, and 575 lines that did not need to exist',
+        title: 'Materials, pulled apart',
+        kicker: 'Testing',
+        blocks: [
+          {
+            kind: 'text',
+            text: 'Alongside the trusses, a unit on material testing: reading stress–strain curves and extracting the proportional limit, yield point, ultimate strength, failure stress, modulus of elasticity and modulus of resilience from them.',
+          },
+          {
+            kind: 'definitions',
+            items: [
+              {
+                term: 'Before the yield point',
+                description:
+                  'Deformation is elastic. Stop the test and the specimen returns to its original shape.',
+              },
+              {
+                term: 'After the yield point',
+                description:
+                  'Deformation is plastic and permanent. This is the line a structure is not allowed to cross in service, and it is why yield rather than ultimate strength is usually the design limit.',
+              },
+              {
+                term: 'Modulus of elasticity',
+                description:
+                  'The slope of the elastic region — how stiffly a material resists being deformed at all. Across the metals we tested, steel came out stiffest, then aluminium, then brass.',
+              },
+            ],
+          },
+          // TODO(Desmond): your résumé mentions a composite insulation lid made
+          // from recycled materials, R-value estimated at 14–16 and checked
+          // with Vernier temperature probes. It is not in the notebook you sent,
+          // so I left it out rather than guess at the details. If you want it,
+          // it belongs right here — add a `text` block describing it.
+        ],
+      },
+      {
+        title: 'Pascal’s law, and a claw that did not work',
+        kicker: 'Fluid power',
+        blocks: [
+          {
+            kind: 'text',
+            text: 'The unit project was a claw machine driven entirely by syringe hydraulics — no motors — able to pick up something about the size of an easter egg, with a non-electronic timer, a non-electric sound indicator and a prize chute. Two syringes joined by a tube, one full of water and one empty: push the first and the second extends, because pressure in a confined fluid is transmitted undiminished. A VEX frame carried the gantry, tongue-depressor scissor arms did the lifting, and the claw and a pipe bracket were modelled in Fusion 360 and printed.',
+          },
+          {
+            kind: 'callout',
+            tone: 'caution',
+            title: 'It did not work',
+            text: 'The only mechanism that worked properly was the timer, and we ran out of time to integrate even that into the machine. The claw machine as a whole never functioned, and the reason was time management rather than any single technical problem.',
+          },
+          {
+            kind: 'steps',
+            items: [
+              {
+                title: 'The scissor lift was too long for the frame',
+                text: 'Extending the frame cost about ten minutes and was the cheapest problem of the project.',
+              },
+              {
+                title: 'The gantry bound up',
+                text: 'Cardboard would not slide freely on the pipes. We replaced it with a VEX channel and a sliding piece, and cured the remaining resistance by swapping which face slid against which.',
+              },
+              {
+                title: 'The scissor arms were redesigned and printed',
+                text: 'Filleted rectangles in Fusion 360 replaced the tongue depressors and moved far better. By then there was no time left to redesign the gantry to match.',
+              },
+              {
+                title: 'The vertical axis never moved properly',
+                text: 'Zip ties holding the scissor mechanism generated enough friction to stop it travelling. Loosening them did not help, and we ran out of time and shipped it that way.',
+              },
+            ],
+          },
+          {
+            kind: 'text',
+            text: 'The timer is the part I am still pleased with. A syringe raises a platform carrying a one-pound weight; gravity pulls the weight back down and forces the water back to the first syringe at a rate set by the restriction; when the platform reaches the bottom it closes a bare-wire contact that completes a circuit and sounds a buzzer. It is a hydraulic clock with an electrical alarm on the end, and it worked first time.',
+          },
+          {
+            kind: 'text',
+            text: 'The root cause of the rest was a decision made on day one: we copied a video. The machine in it was smaller than ours had to be and the person building it knew far more than we did, so every dimension we borrowed was wrong for our brief. Building the whole thing in VEX from the start, instead of cardboard, would have been more stable and faster.',
+          },
+        ],
+      },
+      {
+        title: 'Pinball: seven hundred lines to a hundred and twenty-five',
         kicker: 'Controls',
         blocks: [
           {
             kind: 'text',
-            text: 'VEX V5 robots programmed in Python — distance sensing, colour sensing, conditional logic — and a working pinball machine, wired and coded end to end.',
+            text: 'A working pinball machine, mechanical and electrical: six large VEX plates for the frame, solenoid-driven flippers, sensor-triggered scoring, and a display running scoring, start-up and high-score animations. Each solenoid runs through a relay so the switching surge never reaches the button, and the relay is what the button actually drives.',
           },
           {
             kind: 'metrics',
@@ -80,17 +197,63 @@ export const principlesOfEngineering: Project = {
           },
           {
             kind: 'text',
-            text: 'The pinball control code started at over seven hundred lines and ended at a hundred and twenty-five, entirely by pulling repeated blocks into functions and loops. Nothing about what the machine did changed. What changed was that the version I could still read a week later was the short one — which is the lesson, and it is not one you learn from a program that was short to begin with.',
+            text: 'The control code started at over seven hundred lines and ended at a hundred and twenty-five, entirely by pulling repeated blocks into functions and loops. Nothing the machine did changed. What changed was that the version I could still read a week later was the short one.',
+          },
+          {
+            kind: 'callout',
+            tone: 'caution',
+            title: 'We missed the deadline',
+            text: 'The obstacles were the hard part and we left them late — printed ramps that were too steep for the ball, or that it could not roll through at all, went through several rounds of redesign. Meanwhile I was adding features to code that already worked. We handed in late and were penalised for it, and the trade I made was the wrong way round.',
           },
         ],
       },
       {
-        title: 'Insulation, measured rather than claimed',
-        kicker: 'Thermal',
+        title: 'Chi-square on a case of sweets',
+        kicker: 'Statistics',
         blocks: [
           {
             kind: 'text',
-            text: 'A composite insulation lid built from recycled materials, reaching an estimated R-value of 14 to 16. The number came from Vernier temperature probe testing rather than from the datasheet of any one material — which matters for a composite, where the assembled performance is not the sum of the parts.',
+            text: 'The statistics unit had a genuinely good problem in it. Given the colour counts from a 48-pack case and the two published colour formulas of the two factories that make them, work out which factory the case came from.',
+          },
+          {
+            kind: 'steps',
+            items: [
+              {
+                title: 'Describe the data',
+                text: 'Mean, median, mode and sample standard deviation per colour, then a histogram for each binned at ±1, 2 and 3 standard deviations from the mean. They came out close to symmetric.',
+              },
+              {
+                title: 'State the hypotheses',
+                text: 'Null: no significant difference between the observed counts and the counts that factory’s formula predicts. Alternative: there is one.',
+              },
+              {
+                title: 'Run the test',
+                text: 'Sum of (observed − expected)² / expected across the six colours, against five degrees of freedom and a critical value of 11.07 at p = 0.05.',
+              },
+              {
+                title: 'Read the result',
+                text: 'One factory produced a test statistic far below the critical value, so the null could not be rejected for it — the case matched the Charlotte formula, and orange was the colour distributed most consistently.',
+              },
+            ],
+          },
+          {
+            kind: 'text',
+            text: 'This was the first time I used a hypothesis test to answer a question rather than to fill in a worksheet, and the first time the phrase "we cannot reject the null" meant something concrete: not proof the case came from that factory, only an absence of evidence that it did not.',
+          },
+        ],
+      },
+      {
+        title: 'What I would do differently',
+        kicker: 'Reflection',
+        blocks: [
+          {
+            kind: 'list',
+            items: [
+              'Two of the three big projects were finished late or not at all, and neither was blocked by a problem I could not solve. Both were blocked by spending the time on the wrong part — polishing code that worked, or copying a design that did not fit the brief.',
+              'Build the jig before you need it. The VEX fixture that held the truss supports square took ten minutes and would have saved a rebuild if it had existed first.',
+              'Prototype the moving parts before committing to the frame around them. The gantry and the vertical axis were both discovered to be too stiff after everything else was already built around them.',
+              'The truss result is the one I would put in front of somebody: our design lost, the data said exactly why, and the fix — shorter members, more of them — was legible in the numbers before anybody explained it.',
+            ],
           },
         ],
       },
