@@ -37,12 +37,37 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://deswo.github.io/portfolio/projects/neutron-transport</loc>
+    <lastmod>2026-08-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://deswo.github.io/portfolio/projects/engineering-explorer</loc>
     <lastmod>2026-08-18</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://deswo.github.io/portfolio/projects/fusion-sandbox</loc>
+    <lastmod>2026-08-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://deswo.github.io/portfolio/projects/digital-electronics</loc>
+    <lastmod>2026-08-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://deswo.github.io/portfolio/projects/principles-of-engineering</loc>
+    <lastmod>2026-08-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://deswo.github.io/portfolio/projects/intro-engineering-design</loc>
+    <lastmod>2026-08-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://deswo.github.io/portfolio/projects/outreach-tool</loc>
     <lastmod>2026-08-18</lastmod>
     <priority>0.8</priority>
   </url>

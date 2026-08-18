@@ -2,8 +2,13 @@ import type { Project } from '../types.ts'
 
 import { radiant } from './radiant.ts'
 import { fusioncore } from './fusioncore.ts'
+import { neutronTransport } from './neutron-transport.ts'
 import { engineeringExplorer } from './engineering-explorer.ts'
 import { fusionSandbox } from './fusion-sandbox.ts'
+import { digitalElectronics } from './digital-electronics.ts'
+import { principlesOfEngineering } from './principles-of-engineering.ts'
+import { introEngineeringDesign } from './intro-engineering-design.ts'
+import { outreachTool } from './outreach-tool.ts'
 
 /**
  * ============================================================================
@@ -20,12 +25,20 @@ import { fusionSandbox } from './fusion-sandbox.ts'
  * Featured projects are pinned above the rest wherever order matters, so this
  * array only decides the order *within* the featured group and *within* the
  * rest. Set `featured: true` in a project file to promote it.
+ *
+ * Four are featured, which is about as many as the home page carries before it
+ * gets long. The self-directed work leads; the coursework builds follow.
  */
 export const projects: Project[] = [
   radiant,
   fusioncore,
+  neutronTransport,
   engineeringExplorer,
   fusionSandbox,
+  digitalElectronics,
+  principlesOfEngineering,
+  introEngineeringDesign,
+  outreachTool,
 ]
 
 /** Everything except drafts. This is what the site actually renders. */

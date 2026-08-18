@@ -41,25 +41,30 @@ This guide assumes you know basic Git and GitHub. It assumes nothing about React
 
 ## Before you publish: a short checklist
 
-These are the things the site is currently waiting on from you. None of them
-break anything — each one is simply hidden until you fill it in.
+These are the things the site is still waiting on. None of them break anything —
+each one is simply hidden or approximate until you fix it.
 
+- [ ] **Read the case-study prose.** Every write-up on this site was drafted
+      from your READMEs and your résumé, in your voice. It is factually grounded
+      but the wording is not yours until you have read it. Start with
+      `src/data/projects/neutron-transport.ts` — it is the one with the least
+      source material behind it, and it says so in a comment.
 - [ ] **Résumé.** Put the PDF at `public/resume/` and set `resume` in
       `src/data/profile.ts`. Until then, every "Résumé" button is hidden.
-- [ ] **LinkedIn.** Paste your profile URL into `src/data/links.ts`.
-- [ ] **itch.io.** Same file, if you publish anything there.
-- [ ] **Experience.** `src/data/experience.ts` has one honest entry (independent
-      projects). Add internships, programmes and clubs as they happen.
-- [ ] **Coursework.** `src/data/education.ts` has a commented-out `coursework`
-      line. Fill it in with classes you have actually taken.
-- [ ] **The RADIANT paper.** `src/data/research.ts` marks it as a draft and has
-      no PDF attached. Confirm the status and attach the file.
+- [ ] **Experience dates.** `src/data/experience.ts` guesses the periods for the
+      Johns Hopkins programme, WCN and the American Nuclear Society, because
+      your résumé listed them without dates. Correct them.
+- [ ] **The Autodesk certification date** in `src/data/certifications.ts` says
+      just `2025`. Make it the real month.
+- [ ] **The RADIANT paper.** `src/data/research.ts` marks it a draft with no PDF
+      attached. Attach the file when you are ready to show it.
+- [ ] **itch.io**, in `src/data/links.ts`, if you publish anything there.
 - [ ] **Check the repository name.** The site is currently built for a repo
       called `portfolio` — see [Deploying](#deploying) if yours is named
       something else.
 
 Search the project for `TODO(Desmond)` and you will find every one of these
-marked in place.
+marked in place. `npm run check` also prints the ones it can detect.
 
 ---
 

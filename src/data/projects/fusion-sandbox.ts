@@ -10,7 +10,9 @@ export const fusionSandbox: Project = {
   status: 'in-progress',
   date: 'August 2026 – present',
   sortDate: '2026-08',
-  featured: true,
+  // Not featured only because four blocks is as many as the home page carries
+  // comfortably. Set this to true and unfeature another to swap it in.
+  featured: false,
   technologies: ['Python 3.11', 'Godot 4.7', 'GDScript', 'NumPy', 'pytest', 'JSON-lines IPC'],
   achievements: [
     'Phase 1A and 1B complete: a validated Boris pusher and an interactive experiment workstation.',

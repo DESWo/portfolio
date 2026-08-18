@@ -107,8 +107,8 @@ export const research: ResearchEntry[] = [
     authors: ['Desmond Wong'],
     date: '2026',
     sortDate: '2026-06',
-    // TODO(Desmond): confirm this status. If the manuscript is finished and
-    // posted somewhere, change it to 'published' and fill in `publication`.
+    // TODO(Desmond): move this to 'under-review' once it is submitted, and to
+    // 'published' when it is out — and fill in `publication` and `doi` then.
     // Either way, drop the PDF in public/papers/ and set `pdf` below.
     status: 'draft',
     topics: ['Nuclear energy', 'Energy policy', 'Science communication'],
@@ -121,6 +121,7 @@ export const research: ResearchEntry[] = [
       'Wong, D. (2026). Radiant: The Case for Nuclear Energy. Unpublished manuscript.',
     progress: [
       'The argument and its full source list are already public as an interactive site — see the RADIANT project.',
+      'Currently reaching out to nuclear policy and materials researchers as potential co-authors, with the aim of taking it toward publication.',
       'The written manuscript itself is not posted here yet.',
     ],
   },

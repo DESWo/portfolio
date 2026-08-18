@@ -63,8 +63,11 @@ export function Projects() {
       <Container>
         <div className="flex flex-wrap items-center justify-between gap-4 border-y border-rule py-3">
           {/* Filters. A group of buttons rather than a <select>: there are few
-              enough to show them all, and each one carries its count. */}
-          <div className="-mx-1 flex flex-1 gap-1 overflow-x-auto px-1 py-0.5">
+              enough to show them all, and each one carries its count.
+              They wrap onto a second line from `sm` up, where there is room —
+              a hidden filter is a filter nobody uses. Only on a phone does the
+              row scroll sideways instead. */}
+          <div className="-mx-1 flex flex-1 flex-wrap gap-1 px-1 py-0.5 max-sm:flex-nowrap max-sm:overflow-x-auto">
             <FilterButton
               label="All"
               count={orderedProjects.length}

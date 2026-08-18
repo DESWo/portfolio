@@ -38,8 +38,8 @@ export const profile: Profile = {
   facts: [
     { label: 'Focus', value: 'Nuclear & fusion energy' },
     { label: 'Studying', value: 'Diamond Bar High School, Class of 2027' },
-    { label: 'Based in', value: 'California' },
-    { label: 'Currently', value: 'Magnetic-confinement literature study' },
+    { label: 'Based in', value: 'Diamond Bar, California' },
+    { label: 'Currently', value: 'Writing a Monte Carlo neutron transport code' },
   ],
 
   /**
@@ -67,9 +67,10 @@ export const profile: Profile = {
   /** The About page. One string per paragraph. */
   about: [
     'I build things to find out how they work. That is most of it. A question I cannot put down turns into a model, the model turns into something you can operate, and by the time it runs I understand the system in a way that reading about it never got me.',
+    'Not all of it is software. Three years of my school’s engineering sequence meant a balsa truss bridge tuned for force-to-weight against a strict mass limit, a claw run on syringe hydraulics with its own 3D-printed parts, and logic circuits minimised on paper and then built twice — once on a breadboard and once on a programmable device. Physical builds give a different kind of feedback. A simulation does what it was told to; a bridge tells you where it actually breaks.',
     'Most of what I make ends up somewhere near energy. Fission and fusion are the clearest cases I know of a field where the physics is settled enough to compute and the engineering is still genuinely open — the arguments are about materials, confinement, cost and risk, not about whether the reaction works.',
     'The habit I care about most is being honest about the model. FusionCore has a section on what it deliberately gets wrong. RADIANT carries a primary citation for every number on the page, and a limitations section that argues against itself. Engineering Explorer’s physics is pinned by scripts that re-derive the answers from outside the code, and nothing deploys on a red check. I would rather ship a model that says where it bends than one that looks authoritative and is not.',
-    'Right now that means working through magnetic-confinement physics properly — reaction rates, confinement scaling, and enough of the tokamak and stellarator literature to find a question narrow enough that I could actually answer it. I am still in high school, so none of this is credentialed work. It is checked, sourced, and mine.',
+    'Right now that means two things at once: writing a Monte Carlo neutron transport code from scratch to find out how the tools the field actually runs on are built, and working through magnetic-confinement physics properly — reaction rates, confinement scaling, and enough of the tokamak and stellarator literature to find a question narrow enough that I could answer it. I am still in high school, so none of this is credentialed work. It is checked, sourced, and mine.',
   ],
 
   /**

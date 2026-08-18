@@ -22,6 +22,9 @@ export interface ContactLink {
 
 export const contactLinks: ContactLink[] = [
   {
+    // Your personal address rather than the school one, because this site
+    // should still work after you graduate. It is also the address already
+    // published on RADIANT. Swap it if you would rather use the school one.
     id: 'email',
     label: 'Email',
     display: 'wongdesmond414@gmail.com',
@@ -38,11 +41,10 @@ export const contactLinks: ContactLink[] = [
     primary: true,
   },
   {
-    // TODO(Desmond): paste your LinkedIn URL here and it appears everywhere.
     id: 'linkedin',
     label: 'LinkedIn',
-    display: '',
-    href: '',
+    display: 'linkedin.com/in/desmond-wong',
+    href: 'https://www.linkedin.com/in/desmond-wong-703aa9307/',
     icon: 'linkedin',
     primary: true,
   },

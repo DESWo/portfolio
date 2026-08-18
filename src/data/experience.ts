@@ -8,6 +8,9 @@ import type { Experience } from './types.ts'
  * the About page — nothing renders an empty heading.
  *
  * A full example with every field is at the bottom of this file. Copy it.
+ *
+ * TODO(Desmond): the `period` on the three entries below is a best guess from
+ * your résumé, which listed them without dates. Correct them.
  */
 export const experience: Experience[] = [
   {
@@ -19,15 +22,46 @@ export const experience: Experience[] = [
     summary:
       'Self-directed work: choosing a system I want to understand, building a model of it, and publishing the model with its sources and its limitations.',
     highlights: [
-      'Four projects shipped or in progress across nuclear, fusion, structural and control systems.',
+      'Five projects shipped or in progress across nuclear, fusion, structural and control systems.',
       'Every published model is backed by automated checks that run in CI, including physics validated against closed-form results and against independent reference integrations.',
       'Roughly 350 commits across the public repositories to date.',
     ],
     technologies: ['Python', 'TypeScript', 'React', 'Godot', 'Playwright', 'GitHub Actions'],
   },
+  {
+    id: 'jhu-see',
+    role: 'Sustainable Energy Engineering',
+    organization: 'Johns Hopkins Whiting School of Engineering — Pre-College Program',
+    location: 'Pasadena, California',
+    period: 'Summer 2026',
+    sortDate: '2026-06',
+    kind: 'program',
+    summary:
+      'University pre-college programme in sustainable energy engineering, carrying three transferable credits.',
+  },
+  {
+    id: 'wcn',
+    role: 'Core Member',
+    organization: 'WCN (nonprofit)',
+    period: '2025 – present',
+    sortDate: '2025-01',
+    kind: 'leadership',
+    summary:
+      'Design client websites and lead client outreach for a student-run nonprofit.',
+    highlights: ['The team has facilitated over $100,000 in client revenue.'],
+    technologies: ['Wix', 'Figma'],
+  },
+  {
+    id: 'ans',
+    role: 'Member',
+    organization: 'American Nuclear Society',
+    period: '2026 – present',
+    sortDate: '2026-01',
+    kind: 'program',
+  },
 
   /* ---------------------------------------------------------------------
-   * TODO(Desmond): add internships, programmes, jobs, clubs and leadership
+   * TODO(Desmond): add internships, programmes, jobs and further leadership
    * roles here as they happen. Copy the block below, fill it in, and put it
    * above the entry that came before it.
    *

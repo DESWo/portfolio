@@ -61,7 +61,11 @@ export function ProjectCard({
         </div>
 
         <div className="mt-5">
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 font-mono text-[0.6875rem] tracking-[0.1em] text-ink-faint uppercase">
+          {/* The minimum height reserves room for the second line this row
+              takes when a long date and a long status do not fit together, so
+              titles stay on the same baseline right across the grid instead of
+              stepping down on whichever card happened to wrap. */}
+          <div className="flex min-h-10 flex-wrap content-start items-center gap-x-3 gap-y-1.5 font-mono text-[0.6875rem] tracking-[0.1em] text-ink-faint uppercase">
             {primary ? <span className="text-ink-muted">{categoryLabel(primary)}</span> : null}
             <span aria-hidden="true" className="text-rule-strong">
               /

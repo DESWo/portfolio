@@ -17,12 +17,17 @@ export const skillGroups: SkillGroup[] = [
   {
     id: 'engineering',
     title: 'Engineering & physics',
-    description: 'Subject matter I have modelled, not subject matter I have read about.',
+    description: 'Subject matter I have modelled or built, not subject matter I have read about.',
     skills: [
       {
         name: 'Reactor physics',
         note: 'Point kinetics, delayed neutrons, Doppler and coolant feedback, xenon poisoning, decay heat.',
         evidence: ['radiant', 'fusioncore'],
+      },
+      {
+        name: 'Neutron transport',
+        note: 'Monte Carlo histories, continuous-energy cross sections, criticality calculation.',
+        evidence: ['neutron-transport'],
       },
       {
         name: 'Magnetic confinement',
@@ -31,29 +36,28 @@ export const skillGroups: SkillGroup[] = [
       },
       {
         name: 'Fusion reaction physics',
-        note: 'Maxwellian-averaged reactivity, the triple product, engineering versus physics Q.',
+        note: 'Maxwellian-averaged reactivity, the Lawson criterion and triple product, engineering versus physics Q.',
         evidence: ['fusioncore'],
       },
       {
         name: 'Structural analysis',
-        note: 'Direct stiffness method for trusses; recognising a mechanism from a singular system.',
-        evidence: ['engineering-explorer'],
+        note: 'Direct stiffness method for trusses, force-to-weight optimisation, recognising a mechanism from a singular system.',
+        evidence: ['principles-of-engineering', 'engineering-explorer'],
       },
       {
-        name: 'Mechanical vibration',
-        note: 'Base-excitation transmissibility, resonance, and what happens past the crossover.',
-        evidence: ['engineering-explorer'],
+        name: 'Mechanical systems',
+        note: 'Base-excitation transmissibility and resonance; hydraulics and Pascal’s law in a working mechanism.',
+        evidence: ['engineering-explorer', 'principles-of-engineering'],
+      },
+      {
+        name: 'Digital logic',
+        note: 'Combinational and sequential design, K-mapping, Boolean minimisation, universal-gate implementation.',
+        evidence: ['digital-electronics'],
       },
       {
         name: 'Energy systems',
-        note: 'Generation mix, capacity factor, carbon intensity, levelised cost, recirculating power.',
+        note: 'Generation mix, capacity factor, carbon intensity, levelised cost, recirculating power, thermal insulation.',
         evidence: ['radiant', 'fusioncore'],
-      },
-      {
-        name: 'CAD',
-        // TODO(Desmond): once a CAD project is on the site, add its slug to
-        // `evidence` here and this line grows a link to it.
-        note: 'Part and assembly modelling in Autodesk Fusion.',
       },
     ],
   },
@@ -63,6 +67,11 @@ export const skillGroups: SkillGroup[] = [
     title: 'Modelling & numerical methods',
     description: 'Turning a physical system into something a computer can answer questions about.',
     skills: [
+      {
+        name: 'Monte Carlo methods',
+        note: 'Sampling particle histories and reading the answer out of the statistics rather than out of an equation.',
+        evidence: ['neutron-transport'],
+      },
       {
         name: 'Numerical integration',
         note: 'Boris pusher for charged particles; Runge–Kutta used as an independent reference.',
@@ -77,6 +86,11 @@ export const skillGroups: SkillGroup[] = [
         name: 'Curve fitting',
         note: 'Log–log polynomial fits to tabulated reaction data, checked against a published parameterisation away from the anchors.',
         evidence: ['fusioncore'],
+      },
+      {
+        name: 'Statistical analysis',
+        note: 'Chi-square testing, standard deviation, and testing enough samples to tell a real difference from spread.',
+        evidence: ['intro-engineering-design'],
       },
       {
         name: 'Model validation',
@@ -96,7 +110,12 @@ export const skillGroups: SkillGroup[] = [
     title: 'Software',
     description: 'Languages and libraries I have shipped something non-trivial in.',
     skills: [
-      { name: 'Python', note: 'Physics backends, packaging, pytest.', evidence: ['fusion-sandbox'] },
+      {
+        name: 'Python',
+        note: 'Physics backends, packaging, pytest, robotics and sensor code.',
+        evidence: ['fusion-sandbox', 'principles-of-engineering'],
+      },
+      { name: 'C++', note: 'College coursework — Programming I.' },
       {
         name: 'TypeScript',
         note: 'Typed simulation and application code.',
@@ -119,7 +138,49 @@ export const skillGroups: SkillGroup[] = [
       },
       { name: 'GDScript & Godot', note: 'Interactive 3D front ends.', evidence: ['fusion-sandbox'] },
       { name: 'Three.js', note: 'Real-time 3D in the browser.', evidence: ['fusioncore'] },
-      { name: 'SVG', note: 'Hand-authored technical diagrams and animated schematics.', evidence: ['radiant'] },
+      {
+        name: 'SVG',
+        note: 'Hand-authored technical diagrams and animated schematics.',
+        evidence: ['radiant'],
+      },
+    ],
+  },
+
+  {
+    id: 'making',
+    title: 'CAD & fabrication',
+    description: 'The half of engineering that ends up on a bench rather than on a screen.',
+    skills: [
+      {
+        name: 'Autodesk Fusion 360',
+        note: 'Certified user. Parametric part and assembly modelling for printed and machined parts.',
+        evidence: ['principles-of-engineering', 'intro-engineering-design'],
+      },
+      {
+        name: 'Technical drawing',
+        note: 'Isometric and multiview projection, GD&T, fully dimensioned drawings somebody else could build from.',
+        evidence: ['intro-engineering-design'],
+      },
+      {
+        name: '3D printing',
+        note: 'Designing for the process, and iterating a part across several prints.',
+        evidence: ['principles-of-engineering', 'intro-engineering-design'],
+      },
+      {
+        name: 'Breadboarding & soldering',
+        note: 'Building logic circuits on the bench, and moving them onto programmable logic.',
+        evidence: ['digital-electronics'],
+      },
+      {
+        name: 'Hydraulics & mechanisms',
+        note: 'Syringe hydraulics, scissor lifts, and linkages that have to survive being operated.',
+        evidence: ['principles-of-engineering'],
+      },
+      {
+        name: 'Robotics',
+        note: 'VEX V5 construction and control code with distance and colour sensing.',
+        evidence: ['principles-of-engineering'],
+      },
     ],
   },
 
@@ -148,8 +209,13 @@ export const skillGroups: SkillGroup[] = [
         note: 'Keyboard paths for every control, contrast asserted by script, reduced-motion support.',
         evidence: ['fusioncore', 'engineering-explorer'],
       },
-      { name: 'Autodesk Fusion', note: 'Parametric modelling.' },
-      { name: 'Excel & Google Sheets', note: 'Data tidying and quick analysis.' },
+      {
+        name: 'Project management',
+        note: 'Gantt charts, SCRUM logs, decision matrices, and iterative design and testing.',
+        evidence: ['intro-engineering-design'],
+      },
+      { name: 'Multisim & MDSolids', note: 'Circuit simulation and structural analysis.' },
+      { name: 'Figma', note: 'Interface and editorial layout work.' },
       { name: 'Technical writing', note: 'Documenting what a model assumes and where it bends.' },
     ],
   },
