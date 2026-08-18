@@ -644,8 +644,60 @@ places so links, images and the sitemap all agree:
   **case-sensitive**, so it must match the repository name exactly.
 - `src/data/site.ts` → `url`.
 
-**Using a custom domain, or a repo named `DESWo.github.io`?** Set `BASE_PATH` to
-`'/'` and `url` to your domain.
+### Using your own domain
+
+This is the change that makes the whole thing stop looking like a student
+project, and it takes about ten minutes. `deswo.github.io/portfolio/` becomes
+`desmondwong.com`. The hosting stays free.
+
+1. **Buy the domain.** Cloudflare Registrar sells at cost, about $10–12/year for
+   a `.com`. Namecheap and Porkbun are fine too. Avoid the ones that advertise
+   $1 first-year deals — the renewal is where they get you.
+
+2. **Tell the site its new address.** Two edits:
+
+   - `vite.config.ts` → `const BASE_PATH = '/'`
+   - `src/data/site.ts` → `url: 'https://desmondwong.com/'`
+
+3. **Create `public/CNAME`** — one line, just the domain, no `https://`:
+
+   ```
+   desmondwong.com
+   ```
+
+   It has to live in `public/` so it ends up in the built output on every
+   deploy. A custom domain set only in the GitHub settings page can get dropped
+   when an Action republishes.
+
+4. **Point the DNS at GitHub.** At your registrar, add these records:
+
+   | Type    | Name  | Value                                    |
+   | ------- | ----- | ---------------------------------------- |
+   | `A`     | `@`   | `185.199.108.153`                        |
+   | `A`     | `@`   | `185.199.109.153`                        |
+   | `A`     | `@`   | `185.199.110.153`                        |
+   | `A`     | `@`   | `185.199.111.153`                        |
+   | `CNAME` | `www` | `deswo.github.io`                        |
+
+5. **Turn on HTTPS.** Repository → Settings → Pages → tick **Enforce HTTPS**.
+   The certificate takes a few minutes to issue; the tickbox is greyed out until
+   DNS has propagated, which can be up to an hour.
+
+6. Push. Done.
+
+**Your other projects can move onto the same domain**, which is the part that
+makes it look like one body of work rather than four unrelated links. In each
+project's repo, add a `CNAME` file with a subdomain and add a matching DNS
+record:
+
+| Project              | CNAME file contains        | DNS record                                     |
+| -------------------- | -------------------------- | ---------------------------------------------- |
+| RADIANT              | `radiant.desmondwong.com`  | `CNAME  radiant  →  deswo.github.io`            |
+| FusionCore           | `fusion.desmondwong.com`   | `CNAME  fusion   →  deswo.github.io`            |
+| Engineering Explorer | `explore.desmondwong.com`  | `CNAME  explore  →  deswo.github.io`            |
+
+Then update `liveDemo` in each project's data file to the new address. The
+repositories stay exactly where they are — only the public URL changes.
 
 ---
 
