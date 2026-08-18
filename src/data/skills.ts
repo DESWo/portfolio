@@ -113,7 +113,7 @@ export const skillGroups: SkillGroup[] = [
       {
         name: 'Python',
         note: 'Physics backends, packaging, pytest, robotics and sensor code.',
-        evidence: ['fusion-sandbox', 'principles-of-engineering'],
+        evidence: ['fusion-sandbox', 'principles-of-engineering', 'digital-electronics'],
       },
       { name: 'C++', note: 'College coursework — Programming I.' },
       {
@@ -169,6 +169,11 @@ export const skillGroups: SkillGroup[] = [
       {
         name: 'Breadboarding & soldering',
         note: 'Building logic circuits on the bench, and moving them onto programmable logic.',
+        evidence: ['digital-electronics'],
+      },
+      {
+        name: 'Sensors & embedded I/O',
+        note: 'Raspberry Pi with distance and motion sensors, turning physical movement into input a program can act on.',
         evidence: ['digital-electronics'],
       },
       {
