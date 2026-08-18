@@ -134,8 +134,10 @@ than shipping.
 ## Deploying
 
 Push to `main`. `.github/workflows/deploy.yml` checks, builds and publishes to
-GitHub Pages. See the editing guide for first-time setup and for what to change
-if the repository is renamed.
+GitHub Pages, which serves the site at **wongdesmond.com**. The domain is held
+in `public/CNAME` so it ships with every deploy rather than living only in a
+repository setting. See the editing guide for first-time setup, for the DNS
+records, and for what to change if the domain or the repository name changes.
 
 ## License
 

@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://deswo.github.io/portfolio/sitemap.xml
+Sitemap: https://wongdesmond.com/sitemap.xml

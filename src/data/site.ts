@@ -11,7 +11,7 @@ export const site: SiteConfig = {
   shortName: 'Desmond Wong',
   description:
     'Engineering portfolio of Desmond Wong: nuclear and fusion energy, physical simulation, and the models and sources behind them.',
-  url: 'https://deswo.github.io/portfolio/',
+  url: 'https://wongdesmond.com/',
   ogImage: '/og-card.png',
   locale: 'en',
   footerNote: 'Built and maintained by hand.',

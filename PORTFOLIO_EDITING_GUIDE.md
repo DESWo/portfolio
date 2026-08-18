@@ -708,57 +708,61 @@ places so links, images and the sitemap all agree:
   **case-sensitive**, so it must match the repository name exactly.
 - `src/data/site.ts` → `url`.
 
-### Using your own domain
+None of that applies while the custom domain below is in use — a domain root
+needs no prefix, so `BASE_PATH` is `'/'` and the repository can be called
+anything.
 
-This is the change that makes the whole thing stop looking like a student
-project, and it takes about ten minutes. `deswo.github.io/portfolio/` becomes
-`desmondwong.com`. The hosting stays free.
+### The custom domain
 
-1. **Buy the domain.** Cloudflare Registrar sells at cost, about $10–12/year for
-   a `.com`. Namecheap and Porkbun are fine too. Avoid the ones that advertise
-   $1 first-year deals — the renewal is where they get you.
+The site is served from **wongdesmond.com**. The three code changes that make
+that work are already done, and they are listed here so you know what to undo
+if the domain ever lapses:
 
-2. **Tell the site its new address.** Two edits:
+- `vite.config.ts` → `const BASE_PATH = '/'` (a domain root has no path prefix)
+- `src/data/site.ts` → `url: 'https://wongdesmond.com/'`
+- `public/CNAME` → one line, `wongdesmond.com`, no `https://`
 
-   - `vite.config.ts` → `const BASE_PATH = '/'`
-   - `src/data/site.ts` → `url: 'https://desmondwong.com/'`
+`CNAME` lives in `public/` on purpose, so it lands in the built output on every
+deploy. A custom domain set only through the GitHub settings page can be dropped
+when an Action republishes the site; a file in the artifact cannot.
 
-3. **Create `public/CNAME`** — one line, just the domain, no `https://`:
+`index.html` also names the domain three times, in the canonical link and the
+two Open Graph tags. Those are the first-paint defaults for crawlers that do not
+run JavaScript — the app replaces them per route at runtime.
 
-   ```
-   desmondwong.com
-   ```
+**DNS**, at the registrar. The domain currently answers from Network Solutions
+nameservers (`ns79.worldnic.com` / `ns80.worldnic.com`), so that is where these
+records go — the DNS panel of whichever account holds the domain, not
+necessarily the one that sold it:
 
-   It has to live in `public/` so it ends up in the built output on every
-   deploy. A custom domain set only in the GitHub settings page can get dropped
-   when an Action republishes.
+| Type    | Name  | Value              | Purpose                       |
+| ------- | ----- | ------------------ | ----------------------------- |
+| `A`     | `@`   | `185.199.108.153`  | apex → GitHub Pages           |
+| `A`     | `@`   | `185.199.109.153`  | apex → GitHub Pages           |
+| `A`     | `@`   | `185.199.110.153`  | apex → GitHub Pages           |
+| `A`     | `@`   | `185.199.111.153`  | apex → GitHub Pages           |
+| `CNAME` | `www` | `deswo.github.io`  | www → the same site           |
 
-4. **Point the DNS at GitHub.** At your registrar, add these records:
+All four `A` records are needed; they are GitHub's four Pages front-ends, and
+listing one is how you get an outage the day that one is taken out of service.
+Delete any existing `A` record for `@` that points somewhere else first — a
+parked domain usually ships with one.
 
-   | Type    | Name  | Value                                    |
-   | ------- | ----- | ---------------------------------------- |
-   | `A`     | `@`   | `185.199.108.153`                        |
-   | `A`     | `@`   | `185.199.109.153`                        |
-   | `A`     | `@`   | `185.199.110.153`                        |
-   | `A`     | `@`   | `185.199.111.153`                        |
-   | `CNAME` | `www` | `deswo.github.io`                        |
-
-5. **Turn on HTTPS.** Repository → Settings → Pages → tick **Enforce HTTPS**.
-   The certificate takes a few minutes to issue; the tickbox is greyed out until
-   DNS has propagated, which can be up to an hour.
-
-6. Push. Done.
+**Then**: Repository → Settings → Pages → Custom domain → `wongdesmond.com` →
+Save, wait for the DNS check to go green, then tick **Enforce HTTPS**. The
+tickbox stays greyed out until the certificate is issued, which can take up to
+an hour after DNS propagates. Do not tick anything before the check passes.
 
 **Your other projects can move onto the same domain**, which is the part that
 makes it look like one body of work rather than four unrelated links. In each
 project's repo, add a `CNAME` file with a subdomain and add a matching DNS
 record:
 
-| Project              | CNAME file contains        | DNS record                                     |
-| -------------------- | -------------------------- | ---------------------------------------------- |
-| RADIANT              | `radiant.desmondwong.com`  | `CNAME  radiant  →  deswo.github.io`            |
-| FusionCore           | `fusion.desmondwong.com`   | `CNAME  fusion   →  deswo.github.io`            |
-| Engineering Explorer | `explore.desmondwong.com`  | `CNAME  explore  →  deswo.github.io`            |
+| Project              | CNAME file contains        | DNS record                           |
+| -------------------- | -------------------------- | ------------------------------------ |
+| RADIANT              | `radiant.wongdesmond.com`  | `CNAME  radiant  →  deswo.github.io` |
+| FusionCore           | `fusion.wongdesmond.com`   | `CNAME  fusion   →  deswo.github.io` |
+| Engineering Explorer | `explore.wongdesmond.com`  | `CNAME  explore  →  deswo.github.io` |
 
 Then update `liveDemo` in each project's data file to the new address. The
 repositories stay exactly where they are — only the public URL changes.

@@ -6,18 +6,22 @@ import tailwindcss from '@tailwindcss/vite'
 /**
  * Where the built site lives on the server.
  *
- * GitHub Pages serves a project repo from https://<user>.github.io/<repo>/, so
- * the bundle has to know that prefix. Pages paths are CASE-SENSITIVE and this
- * must match the repository name exactly.
+ * The site is served from the custom domain wongdesmond.com, which is a root,
+ * so there is no path prefix and this is just '/'. `public/CNAME` is what tells
+ * GitHub Pages about the domain, and it ships with every deploy so the setting
+ * cannot be lost.
  *
- *   repo named `portfolio`      ->  '/portfolio/'
- *   repo named `DESWo.github.io` -> '/'          (a GitHub "user site")
- *   custom domain (desmondwong.com) -> '/'
+ * If the domain ever goes away and the site falls back to GitHub Pages, this
+ * has to become the repository name again:
  *
- * If you change this, change `site.url` in src/data/site.ts to match, so the
+ *   custom domain, or a repo named `DESWo.github.io`  ->  '/'
+ *   repo named `portfolio`, no custom domain          ->  '/portfolio/'
+ *
+ * Pages paths are CASE-SENSITIVE, so a prefix must match the repository name
+ * exactly. Change `site.url` in src/data/site.ts alongside this, so the
  * canonical URL and the sitemap keep agreeing with reality.
  */
-const BASE_PATH = '/portfolio/'
+const BASE_PATH = '/'
 
 export default defineConfig(({ mode }) => ({
   // Dev server always runs at the root; only the production build gets the prefix.
