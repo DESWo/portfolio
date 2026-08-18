@@ -54,7 +54,7 @@ export const CATEGORIES = [
   {
     id: 'cad',
     label: 'CAD',
-    description: 'Parts and assemblies modelled in Autodesk Fusion.',
+    description: 'Parts and assemblies modeled in Autodesk Fusion.',
   },
   {
     id: 'mechanical',

@@ -10,7 +10,7 @@ import { useEffect, useRef } from 'react'
  * The observer disconnects after firing, so nothing keeps running once the
  * page has been read. Under `prefers-reduced-motion` the element is marked
  * revealed immediately and no observer is created at all — the CSS also
- * neutralises the transition, so this is belt and braces on purpose: content
+ * neutralizes the transition, so this is belt and braces on purpose: content
  * must never be left invisible because an observer did not fire.
  */
 export function useReveal<T extends HTMLElement>(options?: { rootMargin?: string }) {

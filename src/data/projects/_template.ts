@@ -177,7 +177,7 @@ export const templateProject: Project = {
             caption: 'Optional caption.',
             columns: ['Option', 'Mass', 'Verdict'],
             rows: [
-              ['Aluminium', '120 g', 'Chosen'],
+              ['Aluminum', '120 g', 'Chosen'],
               ['Steel', '340 g', 'Too heavy'],
             ],
           },

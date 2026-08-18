@@ -17,7 +17,7 @@ export const skillGroups: SkillGroup[] = [
   {
     id: 'engineering',
     title: 'Engineering & physics',
-    description: 'Subject matter I have modelled or built, not subject matter I have read about.',
+    description: 'Subject matter I have modeled or built, not subject matter I have read about.',
     skills: [
       {
         name: 'Reactor physics',
@@ -41,7 +41,7 @@ export const skillGroups: SkillGroup[] = [
       },
       {
         name: 'Structural analysis',
-        note: 'Direct stiffness method for trusses, force-to-weight optimisation, recognising a mechanism from a singular system.',
+        note: 'Direct stiffness method for trusses, force-to-weight optimization, recognizing a mechanism from a singular system.',
         evidence: ['principles-of-engineering', 'engineering-explorer'],
       },
       {
@@ -56,20 +56,20 @@ export const skillGroups: SkillGroup[] = [
       },
       {
         name: 'Digital logic',
-        note: 'Combinational and sequential design, K-mapping, Boolean minimisation, universal-gate implementation.',
+        note: 'Combinational and sequential design, K-mapping, Boolean minimization, universal-gate implementation.',
         evidence: ['digital-electronics'],
       },
       {
         name: 'Energy systems',
-        note: 'Generation mix, capacity factor, carbon intensity, levelised cost, recirculating power, thermal insulation.',
+        note: 'Generation mix, capacity factor, carbon intensity, levelized cost, recirculating power, thermal insulation.',
         evidence: ['radiant', 'fusioncore'],
       },
     ],
   },
 
   {
-    id: 'modelling',
-    title: 'Modelling & numerical methods',
+    id: 'modeling',
+    title: 'Modeling & numerical methods',
     description: 'Turning a physical system into something a computer can answer questions about.',
     skills: [
       {
@@ -89,7 +89,7 @@ export const skillGroups: SkillGroup[] = [
       },
       {
         name: 'Curve fitting',
-        note: 'Log–log polynomial fits to tabulated reaction data, checked against a published parameterisation away from the anchors.',
+        note: 'Log–log polynomial fits to tabulated reaction data, checked against a published parameterization away from the anchors.',
         evidence: ['fusioncore'],
       },
       {
@@ -158,7 +158,7 @@ export const skillGroups: SkillGroup[] = [
     skills: [
       {
         name: 'Autodesk Fusion 360',
-        note: 'Certified user. Parametric part and assembly modelling for printed and machined parts.',
+        note: 'Certified user. Parametric part and assembly modeling for printed and machined parts.',
         evidence: ['principles-of-engineering', 'intro-engineering-design'],
       },
       {
@@ -188,7 +188,7 @@ export const skillGroups: SkillGroup[] = [
       },
       {
         name: 'Robotics',
-        note: 'VEX V5 construction and control code with distance and colour sensing.',
+        note: 'VEX V5 construction and control code with distance and color sensing.',
         evidence: ['principles-of-engineering'],
       },
     ],

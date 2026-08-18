@@ -52,7 +52,7 @@ each one is simply hidden or approximate until you fix it.
 - [ ] **Résumé.** Put the PDF at `public/resume/` and set `resume` in
       `src/data/profile.ts`. Until then, every "Résumé" button is hidden.
 - [ ] **Experience dates.** `src/data/experience.ts` guesses the periods for the
-      Johns Hopkins programme, WCN and the American Nuclear Society, because
+      Johns Hopkins program, WCN and the American Nuclear Society, because
       your résumé listed them without dates. Correct them.
 - [ ] **The Autodesk certification date** in `src/data/certifications.ts` says
       just `2025`. Make it the real month.
@@ -375,7 +375,7 @@ assumptions, limitations and trade-offs.
   caption: 'Optional.',
   columns: ['Option', 'Mass', 'Verdict'],
   rows: [
-    ['Aluminium', '120 g', 'Chosen'],
+    ['Aluminum', '120 g', 'Chosen'],
     ['Steel', '340 g', 'Too heavy'],
   ],
 }

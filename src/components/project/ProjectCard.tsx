@@ -12,7 +12,7 @@ import { Icon } from '@/components/ui/Icon'
  * and the tools used.
  *
  * The whole card is one link. The visible affordances — the image lifting, the
- * title taking the accent colour, the arrow sliding — are all driven from the
+ * title taking the accent color, the arrow sliding — are all driven from the
  * group hover on that single link, so there is exactly one tab stop per card
  * and no nested interactive elements.
  */

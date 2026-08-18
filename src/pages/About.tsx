@@ -98,8 +98,8 @@ export function About() {
                     <div>
                       <h3 className="text-[1.0625rem] font-semibold text-ink">{item.role}</h3>
                       {/* On its own line rather than inline after the role:
-                          organisation names get long, and "Role · Very Long
-                          Organisation Name" wraps in the middle of the name. */}
+                          organization names get long, and "Role · Very Long
+                          Organization Name" wraps in the middle of the name. */}
                       {item.organization ? (
                         <p className="mt-1 text-[0.95rem] text-ink-muted">{item.organization}</p>
                       ) : null}

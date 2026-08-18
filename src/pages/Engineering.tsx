@@ -48,9 +48,9 @@ export function Engineering() {
 
               <div>
                 {/* Cell separators are drawn as a 1px ring on each cell rather
-                    than as gaps over a coloured container. Adjacent rings
+                    than as gaps over a colored container. Adjacent rings
                     overlap into a single hairline, and — unlike a gap — an odd
-                    number of skills leaves no stray coloured cell at the end. */}
+                    number of skills leaves no stray colored cell at the end. */}
                 <ul className="grid sm:grid-cols-2">
                   {group.skills.map((skill) => {
                     const evidence = (skill.evidence ?? [])

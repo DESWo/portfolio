@@ -37,7 +37,7 @@ export const introEngineeringDesign: Project = {
           },
           {
             kind: 'text',
-            text: 'The statistics are the part that stuck. One good throw tells you almost nothing about a launcher, because the spread between shots is usually larger than the difference between two designs. Testing enough shots to say which design is actually better — rather than which one happened to win — is the first genuinely engineering-shaped thing I remember doing.',
+            text: 'The statistics are the part that stuck. One good throw tells you almost nothing about a launcher, because the spread between shots is usually bigger than the difference between two designs. Testing enough shots to say which design is actually better, instead of which one happened to win that time, was the first thing I did that felt like real engineering.',
           },
         ],
       },
@@ -47,13 +47,13 @@ export const introEngineeringDesign: Project = {
         blocks: [
           {
             kind: 'text',
-            text: 'I led the design and construction of a working arcade skee-ball machine built entirely from reclaimed materials. The build was managed with a Gantt chart and daily SCRUM logs, which on a machine that size is less bureaucracy than it sounds: a ramp angle decided on Tuesday constrains a scoring ring that somebody else is cutting on Wednesday.',
+            text: 'I led the design and construction of a working arcade skee-ball machine built entirely from reclaimed materials. We managed the build with a Gantt chart and daily SCRUM logs, which sounds like overkill until you’re building something that size. A ramp angle decided on Tuesday constrains a scoring ring somebody else is cutting on Wednesday.',
           },
           {
             kind: 'callout',
             tone: 'note',
             title: 'What the constraint taught',
-            text: 'Building only from reclaimed material inverts the usual design order. You do not specify a part and then source it; you look at what you have and design around its dimensions. It is a real constraint, and it is the same one that makes recycling hard at industrial scale.',
+            text: 'Building only from reclaimed material flips the usual design order. You don’t specify a part and then go find it. You look at what you have and design around its dimensions. It’s a real constraint, and it’s the same one that makes recycling hard at scale.',
           },
         ],
       },
@@ -63,7 +63,7 @@ export const introEngineeringDesign: Project = {
         blocks: [
           {
             kind: 'text',
-            text: 'Isometric, multiview and fully dimensioned drawings produced in Fusion 360, then 3D printed and iterated through several cycles. A fully dimensioned drawing is not decoration — it is the difference between a model only you can build from and a model somebody else can manufacture without asking you a question.',
+            text: 'Isometric, multiview and fully dimensioned drawings in Fusion 360, then 3D printed and iterated through several cycles. A fully dimensioned drawing isn’t decoration. It’s the difference between a model only you can build from and one somebody else can build from without asking you questions.',
           },
         ],
       },

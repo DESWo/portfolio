@@ -26,7 +26,7 @@ export const research: ResearchEntry[] = [
     date: 'August 2026 – present',
     sortDate: '2026-08',
     status: 'researching',
-    topics: ['Fusion', 'Magnetic confinement', 'Plasma physics', 'Systems modelling'],
+    topics: ['Fusion', 'Magnetic confinement', 'Plasma physics', 'Systems modeling'],
     abstract:
       'A phased project with two goals that advance together: learning magnetic-confinement physics well enough to independently defend every equation and assumption used, and producing a reproducible quantitative study of how tokamak and stellarator reactor architectures trade off. The research question is deliberately not yet chosen — it has to emerge from the literature rather than be assumed, and if the initial framing turns out to be weak, oversimplified, or already answered, the framing changes. A null result is an acceptable outcome.',
     relatedProject: 'fusion-sandbox',
@@ -82,7 +82,7 @@ export const research: ResearchEntry[] = [
             kind: 'list',
             items: [
               'No predetermined winner. A null result — no dramatic difference between architectures — is reportable.',
-              'Literature read-status is labelled: full text examined, or abstract and metadata only. The distinction is never blurred.',
+              'Literature read-status is labeled: full text examined, or abstract and metadata only. The distinction is never blurred.',
               'Any citation recalled from memory rather than read starts as unverified and must be checked against the real source before it is used.',
               'Every constant, equation, empirical scaling and parameter range in the eventual model needs provenance.',
               'No fabricated data, sources or results, and no silent tuning toward an expected answer. A hypothesis that changes after seeing data is documented, not hidden.',

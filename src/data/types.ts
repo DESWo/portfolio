@@ -59,7 +59,7 @@ export type Block =
   | { kind: 'text'; text: string | string[] }
   /** A bulleted or numbered list. */
   | { kind: 'list'; items: string[]; ordered?: boolean }
-  /** A labelled list: term on the left, explanation on the right. */
+  /** A labeled list: term on the left, explanation on the right. */
   | { kind: 'definitions'; items: { term: string; description: string }[] }
   /** A single image with an automatic "Fig. n" label. */
   | { kind: 'figure'; image: ImageRef; width?: 'text' | 'wide' | 'full' }
@@ -222,7 +222,7 @@ export interface ResearchEntry {
 export interface Experience {
   /** Unique id, used as a React key. Lowercase, hyphens. */
   id: string
-  /** The job, programme or role. */
+  /** The job, program or role. */
   role: string
   /** The company, school, lab or club. Omit for self-directed work. */
   organization?: string
@@ -317,7 +317,7 @@ export interface Profile {
   intro: string
   /** The About page, one string per paragraph. */
   about: string[]
-  /** Small labelled facts in the hero panel. Keep to four or five. */
+  /** Small labeled facts in the hero panel. Keep to four or five. */
   facts?: { label: string; value: string }[]
   /** Optional headshot. The site looks fine without one. */
   photo?: ImageRef

@@ -45,7 +45,7 @@ export const fusionSandbox: Project = {
           {
             kind: 'text',
             text: [
-              'FusionCore is a game, and it is honest about the fact that its plasma is a single volume-averaged zone. That approximation is what makes it run at 10 Hz in a browser, and it is also a ceiling: there is no version of that model that answers a question I do not already know the answer to.',
+              'FusionCore is a game, and it’s honest that its plasma is a single volume-averaged zone. That approximation is what makes it run at 10 Hz in a browser, and it is also a ceiling: there is no version of that model that answers a question I do not already know the answer to.',
               'Fusion Sandbox starts from the other end. Instead of a plausible whole machine, it builds one thing at a time, correctly, and refuses to move on until that thing is validated. Right now that thing is a single charged particle in a uniform magnetic field. That is a much smaller claim than “fusion simulator”, and it is a claim I can actually defend.',
             ],
           },
@@ -83,7 +83,7 @@ export const fusionSandbox: Project = {
               {
                 term: 'docs/',
                 description:
-                  'Architecture, physics, validation, data sources, assumptions, model versions, roadmap. Every model is documented and categorised before it is written.',
+                  'Architecture, physics, validation, data sources, assumptions, model versions, roadmap. Every model is documented and categorized before it is written.',
               },
             ],
           },
@@ -102,7 +102,7 @@ export const fusionSandbox: Project = {
               },
               {
                 title: 'Against itself, at different step sizes',
-                text: 'Convergence tests confirm the error falls at the order the scheme is supposed to deliver. A method that is merely close is not the same as a method that is correct, and only the convergence order tells the two apart.',
+                text: 'Convergence tests confirm the error falls at the order the scheme is supposed to deliver. Being close to the right answer isn’t the same as being correct, and the convergence order is what tells the two apart.',
               },
               {
                 title: 'Against a deliberately broken copy',
@@ -118,7 +118,7 @@ export const fusionSandbox: Project = {
             kind: 'callout',
             tone: 'note',
             title: 'Phase gates',
-            text: 'No phase is called finished until every layer above is green, and the next phase does not start on my enthusiasm. Both completed phases went through an adversarial review pass afterwards, and both times it found real defects.',
+            text: 'No phase counts as finished until every layer above is green, and the next one doesn’t start just because I’m excited about it. Both completed phases went through an adversarial review pass afterwards, and both times it found real defects.',
           },
         ],
       },
@@ -129,7 +129,7 @@ export const fusionSandbox: Project = {
           {
             kind: 'list',
             items: [
-              'Godot serialises float64 with truncated precision by default. A trajectory that round-trips through JSON quietly loses digits unless full precision is requested explicitly — which is invisible until you compare against an analytic result.',
+              'Godot serializes float64 with truncated precision by default. A trajectory that round-trips through JSON quietly loses digits unless full precision is requested explicitly — which is invisible until you compare against an analytic result.',
               'Godot’s Vector3 is float32. Any number shown to the user has to come from the float64 arrays, never from the scene’s vectors, or the diagnostics disagree with the physics that produced them.',
               'Python decodes standard input as the Windows code page unless told otherwise, which turns a cross-platform pipe into a machine-specific one.',
             ],

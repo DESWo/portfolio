@@ -5,7 +5,7 @@ export const digitalElectronics: Project = {
   title: 'Digital Electronics',
   subtitle: 'Combinational and sequential logic, on breadboard and on silicon',
   summary:
-    'A year of building logic from the gate up: minimising circuits with K-maps, chaining counters into timers, and rebuilding finished designs in NAND and NOR alone to cut the chip count.',
+    'A year of building logic from the gate up: minimizing circuits with K-maps, chaining counters into timers, and rebuilding finished designs in NAND and NOR alone to cut the chip count.',
   categories: ['electrical', 'software'],
   status: 'complete',
   date: '2025 – 2026',
@@ -78,7 +78,7 @@ export const digitalElectronics: Project = {
             kind: 'callout',
             tone: 'caution',
             title: 'The physical build never worked',
-            text: 'The simulation was correct and the PLD implementation was correct. The breadboard was not. I took it apart and rebuilt it four times and it never ran, and I still think the most likely cause is that I wired inputs into IC outputs somewhere in the mess. The honest lesson is that a working design and a working board are two separate achievements, and I had only earned one of them.',
+            text: 'The simulation was correct and the PLD version was correct. The breadboard wasn’t. I took it apart and rebuilt it four times and it never ran. My best guess is still that I wired inputs into IC outputs somewhere in it. A working design and a working board are two different things, and I only had one of them.',
           },
           {
             kind: 'quote',
@@ -87,7 +87,7 @@ export const digitalElectronics: Project = {
           },
           {
             kind: 'text',
-            text: 'Two segments were also wrong in the simulation at first. Tracing them back found a double inversion — two inverters I had not noticed cancelling each other out — which is exactly the kind of error a schematic hides and a truth table does not.',
+            text: 'Two segments were wrong in the simulation at first too. Tracing them back found a double inversion — two inverters I hadn’t noticed canceling each other out — which is the kind of mistake a schematic hides and a truth table doesn’t.',
           },
         ],
       },
@@ -121,7 +121,7 @@ export const digitalElectronics: Project = {
           },
           {
             kind: 'text',
-            text: 'The reset was the part that took longest, and not because it was complicated. I built it with an AND gate first: the count ran, but the reset did nothing. A classmate pointed out it had to be a NAND. Then it reset the ones stage and left the tens counting, and it took me far too long to see that the fix was simply wiring the tens stage’s clear to the same button rather than duplicating the whole reset network for it.',
+            text: 'The reset took the longest, and not because it was complicated. I built it with an AND gate first, so the count ran but the reset did nothing. A classmate pointed out it had to be a NAND. Then it reset the ones stage and left the tens counting, and it took me a while to realize the fix was just wiring the tens stage’s clear to the same button instead of building a second reset network for it.',
           },
           {
             kind: 'callout',
@@ -160,7 +160,7 @@ export const digitalElectronics: Project = {
           },
           {
             kind: 'text',
-            text: 'It did not work for a long time. The count would not cascade and the reset fired at the wrong number. Probing it line by line found the NAND wired to 0100 where it needed 1011, and the cascade fixed itself once I stopped clocking the second stage from the first and used the ripple-out pin instead — which is what it is there for, and what the activity notes had said all along.',
+            text: 'It didn’t work for a long time. The count wouldn’t cascade and the reset fired at the wrong number. Probing it line by line found the NAND wired to 0100 where it needed 1011. The cascade fixed itself once I stopped clocking the second stage from the first and used the ripple-out pin instead, which is what it’s for and what the activity notes said all along.',
           },
         ],
       },
@@ -199,10 +199,10 @@ export const digitalElectronics: Project = {
           {
             kind: 'list',
             items: [
-              'A correct design and a working board are separate problems, and I was much better at the first than the second.',
+              'A correct design and a working board are separate problems, and I was a lot better at the first one than the second.',
               'Most of my lost time came from over-complicating something the activity notes had already answered — the ripple-out pin, the NAND for an active-low clear.',
-              'Troubleshooting is a method, not a mood. Probing line by line to find where the power actually stops found every one of these faults eventually.',
-              'One gate type across a board is worth real money and real bench time, which is an argument I only believed after wiring both versions.',
+              'Troubleshooting is a process. Probing line by line to find where the power actually stops found every one of these faults eventually.',
+              'Using one gate type across a board saves real money and real bench time. I only believed that after wiring both versions.',
             ],
           },
         ],

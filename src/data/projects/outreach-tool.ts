@@ -5,7 +5,7 @@ export const outreachTool: Project = {
   title: 'Research Outreach Tool',
   subtitle: 'Getting students in front of the right researcher',
   summary:
-    'A tool that helps students write and send personalised outreach to professors and researchers when they are looking for mentorship or a research placement.',
+    'A tool that helps students write and send personalized outreach to professors and researchers when they are looking for mentorship or a research placement.',
   categories: ['software'],
   status: 'in-progress',
   date: '2026 – present',

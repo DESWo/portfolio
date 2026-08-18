@@ -106,7 +106,7 @@ export const engineeringExplorer: Project = {
               { symbol: 'f', meaning: 'applied loads, including the truck at its current position' },
             ],
             caption:
-              'The bridge challenge in one line. A singular K is not a numerical accident here — it is the game telling you the structure is a mechanism.',
+              'The bridge challenge in one line. A singular K isn’t a numerical accident here — it’s the game telling you the structure is a mechanism.',
           },
         ],
       },

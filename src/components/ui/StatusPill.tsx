@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 
 /**
  * How each status is drawn: a filled dot means the work is live or finished, a
- * hollow one means it is under way or provisional. Colour is never the only
+ * hollow one means it is under way or provisional. Color is never the only
  * signal — the label is always spelled out next to it.
  */
 type Tone = 'live' | 'progress' | 'settled' | 'quiet'

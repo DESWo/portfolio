@@ -13,7 +13,7 @@
    falls back to a system font rather than being downloaded, which is the right
    trade for a site written in English.
 
-   Colour is defined once as semantic custom properties, twice (light and
+   Color is defined once as semantic custom properties, twice (light and
    dark), and then handed to Tailwind by reference. To restyle the whole site,
    change the values in :root and [data-theme='dark'] below and nothing else.
    =========================================================================== */
@@ -349,7 +349,7 @@
      tricks. Named grid lines do the whole job. */
   .article-grid {
     display: grid;
-    /* The text lane is left-aligned rather than centred, so headings, prose,
+    /* The text lane is left-aligned rather than centered, so headings, prose,
        tables and figures all share one left edge. Wide blocks simply run on
        into the second track. */
     grid-template-columns:

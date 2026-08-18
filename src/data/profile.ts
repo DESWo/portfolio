@@ -24,11 +24,11 @@ export const profile: Profile = {
    * The largest sentence on the site. It should say what you work on, not how
    * good you are at it.
    */
-  tagline: 'Energy systems, and the physics you have to get right to model them.',
+  tagline: 'Nuclear energy, fusion, and the models I build to understand them.',
 
   /** The paragraph under the tagline on the home page. Keep it to one. */
   intro:
-    'I am a twelfth-grade student working toward nuclear engineering. I build simulations and explanatory tools to understand how energy systems actually behave — reactors, plasmas, structures — and I publish the assumptions and sources underneath them along with the result.',
+    'I’m a twelfth-grade student headed for nuclear engineering. I build simulations and explanatory tools to understand how energy systems behave — reactors, plasmas, structures — and I publish the assumptions and the sources along with the result.',
 
   /**
    * The facts panel in the hero. Four or five reads best; more starts to look
@@ -50,27 +50,27 @@ export const profile: Profile = {
     {
       title: 'Energy systems',
       description:
-        'Fission and fusion: how a core holds a chain reaction, how a magnetic bottle holds a plasma, and what sets the limits on both. The physics is settled enough to compute; the engineering is not finished.',
+        'Fission and fusion: how a core holds a chain reaction, how a magnetic field holds a plasma, and what limits both. The physics is settled enough to calculate. The engineering isn’t finished.',
     },
     {
       title: 'Simulation',
       description:
-        'Writing a physical system down as equations, solving it numerically, and then making it operable — because a model you can drive tells you things a model you can only read does not.',
+        'Writing a system down as equations, solving it numerically, then turning it into something you can operate. A model you can drive tells you things a model you can only read doesn’t.',
     },
     {
       title: 'Showing the working',
       description:
-        'Every model I publish carries its sources, its assumptions, and a plain statement of what it deliberately simplifies. A simulation that hides its approximations teaches the wrong lesson.',
+        'Every model I publish comes with its sources, its assumptions, and a plain statement of what it simplifies. A simulation that hides its approximations teaches the wrong lesson.',
     },
   ],
 
   /** The About page. One string per paragraph. */
   about: [
-    'I build things to find out how they work. That is most of it. A question I cannot put down turns into a model, the model turns into something you can operate, and by the time it runs I understand the system in a way that reading about it never got me.',
-    'Not all of it is software. Three years of my school’s engineering sequence meant a balsa truss bridge tuned for force-to-weight against a strict mass limit, a claw run on syringe hydraulics with its own 3D-printed parts, and logic circuits minimised on paper and then built twice — once on a breadboard and once on a programmable device. Physical builds give a different kind of feedback. A simulation does what it was told to; a bridge tells you where it actually breaks.',
-    'Most of what I make ends up somewhere near energy. Fission and fusion are the clearest cases I know of a field where the physics is settled enough to compute and the engineering is still genuinely open — the arguments are about materials, confinement, cost and risk, not about whether the reaction works.',
-    'The habit I care about most is being honest about the model. FusionCore has a section on what it deliberately gets wrong. RADIANT carries a primary citation for every number on the page, and a limitations section that argues against itself. Engineering Explorer’s physics is pinned by scripts that re-derive the answers from outside the code, and nothing deploys on a red check. I would rather ship a model that says where it bends than one that looks authoritative and is not.',
-    'Right now that means two things at once: writing a Monte Carlo neutron transport code from scratch to find out how the tools the field actually runs on are built, and working through magnetic-confinement physics properly — reaction rates, confinement scaling, and enough of the tokamak and stellarator literature to find a question narrow enough that I could answer it. I am still in high school, so none of this is credentialed work. It is checked, sourced, and mine.',
+    'I build things to find out how they work. That’s most of it. A question I can’t drop turns into a model, the model turns into something I can run, and by the time it works I understand the system better than reading about it ever got me.',
+    'Not all of it is software. Three years of my school’s engineering program meant a balsa truss bridge built against a weight limit, a claw run on syringe hydraulics with its own 3D-printed parts, and logic circuits I minimized on paper before building them by hand. Physical builds give you a different kind of feedback. A simulation does what you told it to. A bridge tells you where it actually breaks.',
+    'Most of what I make ends up near energy. Fission and fusion are the clearest cases I know of where the physics is settled enough to calculate but the engineering isn’t finished — the arguments are about materials, confinement, cost and risk, not about whether the reaction works.',
+    'The habit I care about most is being honest about the model. FusionCore has a section on what it deliberately gets wrong. RADIANT cites a primary source for every number on the page, plus a limitations section that argues against itself. Engineering Explorer’s physics is checked by scripts that re-derive the answers from outside the code, and nothing deploys if they fail. I’d rather ship a model that says where it bends than one that looks authoritative and isn’t.',
+    'Right now I’m doing two things at once: writing a Monte Carlo neutron transport code from scratch to find out how the tools the field runs on are built, and working through magnetic confinement physics properly — reaction rates, confinement scaling, and enough of the tokamak and stellarator literature to find a question I could actually answer. I’m still in high school, so none of this is credentialed work. It’s checked, sourced, and mine.',
   ],
 
   /**

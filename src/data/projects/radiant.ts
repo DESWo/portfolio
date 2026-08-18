@@ -95,7 +95,7 @@ export const radiant: Project = {
               {
                 term: 'V · The Field',
                 description:
-                  'How do I join? Myths as a reference shelf, careers, named programmes each linked to the organisation that runs it, and the full source list.',
+                  'How do I join? Myths as a reference shelf, careers, named programmes each linked to the organization that runs it, and the full source list.',
               },
             ],
           },
@@ -125,7 +125,7 @@ export const radiant: Project = {
               {
                 term: 'Grid-mix simulator',
                 description:
-                  'Pick a generation mix and see the carbon intensity, the capacity and the firm share that follow. It is the fastest way I know to show why “just build more solar” and “decarbonise the grid” are not the same sentence.',
+                  'Pick a generation mix and see the carbon intensity, the capacity and the firm share that follow. It’s the fastest way I know to show why “just build more solar” and “decarbonise the grid” are not the same sentence.',
               },
             ],
           },

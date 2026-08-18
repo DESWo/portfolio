@@ -5,7 +5,7 @@ export const neutronTransport: Project = {
   title: 'Neutron Transport Monte Carlo Code',
   subtitle: 'Following neutrons one history at a time',
   summary:
-    'A Monte Carlo neutron transport simulator written from scratch, modelled on how OpenMC and MCNP work. Currently handles continuous-energy cross sections and criticality calculations.',
+    'A Monte Carlo neutron transport simulator written from scratch, modeled on how OpenMC and MCNP work. Currently handles continuous-energy cross sections and criticality calculations.',
   categories: ['nuclear', 'simulation', 'software', 'research'],
   status: 'in-progress',
   date: 'July 2026 – present',
@@ -21,7 +21,7 @@ export const neutronTransport: Project = {
   // written about it relative to how interesting it is.
 
   achievements: [
-    'Reached criticality modelling and continuous-energy cross sections in the physics engine.',
+    'Reached criticality modeling and continuous-energy cross sections in the physics engine.',
   ],
   relatedProjects: ['fusion-sandbox', 'radiant'],
 

@@ -22,7 +22,7 @@ export const principlesOfEngineering: Project = {
   ],
   achievements: [
     'Tested three truss designs to destruction and ranked them by load per gram — our own design came last, which is where the useful conclusions came from.',
-    'Cut pinball control code from over 700 lines to 125 by extracting functions and loops, with no change in behaviour.',
+    'Cut pinball control code from over 700 lines to 125 by extracting functions and loops, with no change in behavior.',
     'Identified which factory produced a 48-pack case of sweets with a chi-square goodness-of-fit test.',
   ],
 
@@ -42,11 +42,11 @@ export const principlesOfEngineering: Project = {
         blocks: [
           {
             kind: 'text',
-            text: 'Ten truss configurations were modelled in MDSolids before anything was cut. Analysing first is the point of the exercise: the software gives you the force in every member and its sign, so you can watch a design fail on screen instead of on the test rig.',
+            text: 'Ten truss configurations were modeled in MDSolids before anything was cut. Analyzing first is the point. MDSolids gives you the force in every member and whether it’s tension or compression, so you can watch a design fail on screen instead of on the test rig.',
           },
           {
             kind: 'text',
-            text: 'We chose a Pratt truss for the bridge — the forces came out close to evenly distributed across the members, and it was simple enough to build accurately, which turned out to matter more than we expected. The brief was a symmetrical bridge, two identical trusses 1.5 inches apart, under twenty grams, in balsa with the provided wood glue. We went with a 16-inch base over a 14-inch one because the longer stock bent less.',
+            text: 'We picked a Pratt truss for the bridge because the forces came out close to evenly distributed across the members, and because it was simple enough to build accurately — which mattered more than we expected. The requirements were a symmetrical bridge, two identical trusses 1.5 inches apart, under twenty grams, built from balsa with the provided wood glue. We went with a 16-inch base over a 14-inch one because the longer stock bent less.',
           },
           // TODO(Desmond): check truss 2's mass against your notebook. The
           // table there records 3.91 g with an efficiency of 3.19, but
@@ -56,7 +56,7 @@ export const principlesOfEngineering: Project = {
           {
             kind: 'table',
             caption:
-              'Three trusses tested to failure on the structural stress analyser. Efficiency is load at failure divided by mass, so it is a measure of how well the material was placed rather than how much of it there was.',
+              'Three trusses tested to failure on the structural stress analyzer. Efficiency is load at failure divided by mass, so it is a measure of how well the material was placed rather than how much of it there was.',
             columns: ['Truss', 'Mass (g)', 'Load at failure (lb)', 'Efficiency (lb/g)'],
             rows: [
               ['1 — prescribed design', '2.40', '6.78', '2.82'],
@@ -68,15 +68,15 @@ export const principlesOfEngineering: Project = {
             kind: 'callout',
             tone: 'caution',
             title: 'Our design was the worst of the three',
-            text: 'It carried a middling load and weighed more than five times what the best one did, so it finished with roughly a quarter of the efficiency. That is the whole lesson of the unit in one row: adding material almost always raises the failure load and always raises the mass, and only one of those is free.',
+            text: 'It held a middling load and weighed more than five times what the best one did, so it came out at about a quarter of the efficiency. Adding material usually raises the load a truss can take, but it always raises the mass. Only one of those helps your score.',
           },
           {
             kind: 'text',
-            text: 'The two conclusions we drew from the tests were that shorter members are stronger, because there is less length in which the wood can buckle or split, and that more members beat fewer, because the load spreads and no single member carries enough to fail. Both point the same way, toward a denser lattice of short members rather than a sparse one of long ones — which is what the winning team had, and what I would build next time.',
+            text: 'We drew two conclusions from the tests. Shorter members are stronger, because there’s less length for the wood to buckle or split along. And more members beat fewer, because the load spreads out and no single member takes enough to fail. Both point the same way: more short members instead of fewer long ones. That’s what the winning team built, and what I’d build next time.',
           },
           {
             kind: 'text',
-            text: 'We predicted failure in the upper members where the calculated forces concentrated. It did break near there, and it also broke towards the bottom, which we had not expected.',
+            text: 'We predicted failure in the upper members where the calculated forces concentrated. It did break near there, and it also broke toward the bottom, which we had not expected.',
           },
         ],
       },
@@ -86,15 +86,15 @@ export const principlesOfEngineering: Project = {
         blocks: [
           {
             kind: 'text',
-            text: 'The analysis was the easy half. Building a truss accurately out of 3/32-inch balsa is a manual skill, and I did not have it yet.',
+            text: 'The analysis was the easy part. Building a truss accurately out of 3/32-inch balsa is a manual skill, and I didn’t have it yet.',
           },
           {
             kind: 'list',
             items: [
-              'Measuring and cutting was the biggest time sink — pieces came out too long or too short repeatedly, wasting both the stock and the period. Once a piece was right it was easy to replicate, which should have told me to make a cutting template far sooner than I did.',
+              'Measuring and cutting was the biggest time sink. Pieces kept coming out too long or too short, which wasted both the balsa and the period. Once a piece was right it was easy to replicate, so I should have made a cutting template much sooner than I did.',
               'Box cutters were the wrong tool. A vertical blade cut balsa far more cleanly and accurately, and switching to one changed the quality of every joint after that.',
-              'Glue discipline matters in both directions. Too little and the joint fails below the strength of the wood; too much and you have simply added mass, which is the one thing the efficiency score punishes. Another team lost on weight for exactly that reason.',
-              'Peeling the finished truss off its paper template cracked the bottom chord in the middle — the worst possible place. We replaced the whole 16-inch member rather than gluing the crack, because a repaired joint at mid-span is where it would have failed anyway.',
+              'Glue matters in both directions. Too little and the joint fails before the wood does. Too much and you’ve just added mass, which is the one thing the efficiency score punishes. Another team lost on weight for exactly that reason.',
+              'Peeling the finished truss off its paper template cracked the bottom chord in the middle, which is the worst place for it. We replaced the whole 16-inch member instead of gluing the crack, because a repaired joint at mid-span is where it would have failed anyway.',
               'The cross supports dried short and crooked, so we cut them off and built a VEX jig to hold the next set square while the glue set. That worked. Then we glued the second truss on backwards, and the finished bridge had its two trusses mirrored rather than matched.',
             ],
           },
@@ -119,12 +119,12 @@ export const principlesOfEngineering: Project = {
               {
                 term: 'After the yield point',
                 description:
-                  'Deformation is plastic and permanent. This is the line a structure is not allowed to cross in service, and it is why yield rather than ultimate strength is usually the design limit.',
+                  'Deformation is plastic and permanent. This is the line a structure isn’t allowed to cross in use, which is why yield strength, not ultimate strength, is usually the design limit.',
               },
               {
                 term: 'Modulus of elasticity',
                 description:
-                  'The slope of the elastic region — how stiffly a material resists being deformed at all. Across the metals we tested, steel came out stiffest, then aluminium, then brass.',
+                  'The slope of the elastic region — how stiffly a material resists being deformed at all. Across the metals we tested, steel came out stiffest, then aluminum, then brass.',
               },
             ],
           },
@@ -141,7 +141,7 @@ export const principlesOfEngineering: Project = {
         blocks: [
           {
             kind: 'text',
-            text: 'The unit project was a claw machine driven entirely by syringe hydraulics — no motors — able to pick up something about the size of an easter egg, with a non-electronic timer, a non-electric sound indicator and a prize chute. Two syringes joined by a tube, one full of water and one empty: push the first and the second extends, because pressure in a confined fluid is transmitted undiminished. A VEX frame carried the gantry, tongue-depressor scissor arms did the lifting, and the claw and a pipe bracket were modelled in Fusion 360 and printed.',
+            text: 'The unit project was a claw machine driven entirely by syringe hydraulics — no motors — able to pick up something about the size of an easter egg, with a non-electronic timer, a non-electric sound indicator and a prize chute. Two syringes joined by a tube, one full of water and one empty: push the first and the second extends, because pressure in a confined fluid is transmitted undiminished. A VEX frame carried the gantry, tongue-depressor scissor arms did the lifting, and the claw and a pipe bracket were modeled in Fusion 360 and printed.',
           },
           {
             kind: 'callout',
@@ -166,17 +166,17 @@ export const principlesOfEngineering: Project = {
               },
               {
                 title: 'The vertical axis never moved properly',
-                text: 'Zip ties holding the scissor mechanism generated enough friction to stop it travelling. Loosening them did not help, and we ran out of time and shipped it that way.',
+                text: 'Zip ties holding the scissor mechanism generated enough friction to stop it traveling. Loosening them did not help, and we ran out of time and shipped it that way.',
               },
             ],
           },
           {
             kind: 'text',
-            text: 'The timer is the part I am still pleased with. A syringe raises a platform carrying a one-pound weight; gravity pulls the weight back down and forces the water back to the first syringe at a rate set by the restriction; when the platform reaches the bottom it closes a bare-wire contact that completes a circuit and sounds a buzzer. It is a hydraulic clock with an electrical alarm on the end, and it worked first time.',
+            text: 'The timer is the part I’m still happy with. A syringe raises a platform holding a one-pound weight. Gravity pulls the weight back down, which pushes the water back into the first syringe. When the platform reaches the bottom it closes a bare-wire contact, completing a circuit that sounds a buzzer. It’s a hydraulic clock with an electrical alarm on the end, and it worked the first time.',
           },
           {
             kind: 'text',
-            text: 'The root cause of the rest was a decision made on day one: we copied a video. The machine in it was smaller than ours had to be and the person building it knew far more than we did, so every dimension we borrowed was wrong for our brief. Building the whole thing in VEX from the start, instead of cardboard, would have been more stable and faster.',
+            text: 'The rest of it traces back to a decision we made on day one: we copied a video. The machine in it was smaller than ours had to be and the person building it knew a lot more than we did, so every dimension we borrowed was wrong for our requirements. Building the whole thing in VEX from the start, instead of cardboard, would have been more stable and faster.',
           },
         ],
       },
@@ -192,7 +192,7 @@ export const principlesOfEngineering: Project = {
             kind: 'metrics',
             items: [
               { value: '700+', label: 'Lines in the first working version' },
-              { value: '125', label: 'Lines after refactoring', note: 'same behaviour' },
+              { value: '125', label: 'Lines after refactoring', note: 'same behavior' },
             ],
           },
           {
@@ -203,7 +203,7 @@ export const principlesOfEngineering: Project = {
             kind: 'callout',
             tone: 'caution',
             title: 'We missed the deadline',
-            text: 'The obstacles were the hard part and we left them late — printed ramps that were too steep for the ball, or that it could not roll through at all, went through several rounds of redesign. Meanwhile I was adding features to code that already worked. We handed in late and were penalised for it, and the trade I made was the wrong way round.',
+            text: 'The obstacles were the hard part and we left them late. Printed ramps came out too steep for the ball, or the ball couldn’t roll through them at all, and they went through several rounds of redesign. Meanwhile I was adding features to code that already worked. We handed it in late and got penalized for it. I spent the time on the wrong thing.',
           },
         ],
       },
@@ -213,14 +213,14 @@ export const principlesOfEngineering: Project = {
         blocks: [
           {
             kind: 'text',
-            text: 'The statistics unit had a genuinely good problem in it. Given the colour counts from a 48-pack case and the two published colour formulas of the two factories that make them, work out which factory the case came from.',
+            text: 'The statistics unit had a genuinely good problem in it. Given the color counts from a 48-pack case and the two published color formulas of the two factories that make them, work out which factory the case came from.',
           },
           {
             kind: 'steps',
             items: [
               {
                 title: 'Describe the data',
-                text: 'Mean, median, mode and sample standard deviation per colour, then a histogram for each binned at ±1, 2 and 3 standard deviations from the mean. They came out close to symmetric.',
+                text: 'Mean, median, mode and sample standard deviation per color, then a histogram for each binned at ±1, 2 and 3 standard deviations from the mean. They came out close to symmetric.',
               },
               {
                 title: 'State the hypotheses',
@@ -228,17 +228,17 @@ export const principlesOfEngineering: Project = {
               },
               {
                 title: 'Run the test',
-                text: 'Sum of (observed − expected)² / expected across the six colours, against five degrees of freedom and a critical value of 11.07 at p = 0.05.',
+                text: 'Sum of (observed − expected)² / expected across the six colors, against five degrees of freedom and a critical value of 11.07 at p = 0.05.',
               },
               {
                 title: 'Read the result',
-                text: 'One factory produced a test statistic far below the critical value, so the null could not be rejected for it — the case matched the Charlotte formula, and orange was the colour distributed most consistently.',
+                text: 'One factory produced a test statistic far below the critical value, so the null could not be rejected for it — the case matched the Charlotte formula, and orange was the color distributed most consistently.',
               },
             ],
           },
           {
             kind: 'text',
-            text: 'This was the first time I used a hypothesis test to answer a question rather than to fill in a worksheet, and the first time the phrase "we cannot reject the null" meant something concrete: not proof the case came from that factory, only an absence of evidence that it did not.',
+            text: 'This was the first time I used a hypothesis test to answer a question instead of to fill in a worksheet. It’s also where "we can’t reject the null" started meaning something to me: not proof the case came from that factory, just no evidence that it didn’t.',
           },
         ],
       },
@@ -249,10 +249,10 @@ export const principlesOfEngineering: Project = {
           {
             kind: 'list',
             items: [
-              'Two of the three big projects were finished late or not at all, and neither was blocked by a problem I could not solve. Both were blocked by spending the time on the wrong part — polishing code that worked, or copying a design that did not fit the brief.',
+              'Two of the three big projects were finished late or not at all, and neither was blocked by a problem I couldn’t solve. Both were blocked by spending time on the wrong part — polishing code that already worked, or copying a design that didn’t fit the requirements.',
               'Build the jig before you need it. The VEX fixture that held the truss supports square took ten minutes and would have saved a rebuild if it had existed first.',
               'Prototype the moving parts before committing to the frame around them. The gantry and the vertical axis were both discovered to be too stiff after everything else was already built around them.',
-              'The truss result is the one I would put in front of somebody: our design lost, the data said exactly why, and the fix — shorter members, more of them — was legible in the numbers before anybody explained it.',
+              'The truss result is the one I’d show somebody first. Our design lost, the data said exactly why, and the fix — shorter members, more of them — was readable in the numbers before anyone explained it.',
             ],
           },
         ],

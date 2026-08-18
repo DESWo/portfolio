@@ -37,7 +37,7 @@ export const experience: Experience[] = [
     sortDate: '2026-06',
     kind: 'program',
     summary:
-      'University pre-college programme in sustainable energy engineering, carrying three transferable credits.',
+      'University pre-college program in sustainable energy engineering, carrying three transferable credits.',
   },
   {
     id: 'wcn',
@@ -79,7 +79,7 @@ export const experience: Experience[] = [
    *     'A second thing. Two to four lines reads best.',
    *   ],
    *   technologies: ['Python', 'MATLAB'],
-   *   links: [{ label: 'Programme page', href: 'https://example.org' }],
+   *   links: [{ label: 'Program page', href: 'https://example.org' }],
    * },
    * ------------------------------------------------------------------- */
 ]

@@ -11,7 +11,7 @@ interface PageMeta {
   /** Share image path under public/, e.g. '/images/projects/radiant.png'. */
   image?: string
   type?: 'website' | 'article'
-  /** Structured data for search engines. Serialised into a JSON-LD script. */
+  /** Structured data for search engines. Serialized into a JSON-LD script. */
   jsonLd?: Record<string, unknown>
 }
 

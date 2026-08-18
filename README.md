@@ -107,7 +107,7 @@ share tags through `usePageMeta`. The tags in `index.html` are the defaults for
 the first paint. The home page also emits a `Person` JSON-LD block.
 
 **Accessibility.** One focus style, never removed. Every image carries `alt`, and
-`npm run check` fails if one does not. Colour is never the only signal — status
+`npm run check` fails if one does not. Color is never the only signal — status
 uses a filled or hollow dot *and* a spelled-out label. Every text pairing in the
 palette has been checked against WCAG AA in both themes; the faintest tone sits
 at 4.6:1 and is the lightest text used anywhere. All motion is disabled under
@@ -127,7 +127,7 @@ Push to `main`. `.github/workflows/deploy.yml` checks, builds and publishes to
 GitHub Pages. See the editing guide for first-time setup and for what to change
 if the repository is renamed.
 
-## Licence
+## License
 
 MIT for the code. The written content, screenshots and images are © Desmond
 Wong — see [LICENSE](LICENSE).
