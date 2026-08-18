@@ -10,8 +10,9 @@
 
 export * from './types.ts'
 export * from './categories.ts'
-export { site, primaryNav } from './site.ts'
+export { site, primaryNav, footerNav } from './site.ts'
 export { profile } from './profile.ts'
+export { copy } from './copy.ts'
 export { contactLinks, activeContactLinks } from './links.ts'
 export type { ContactLink, IconName } from './links.ts'
 export {

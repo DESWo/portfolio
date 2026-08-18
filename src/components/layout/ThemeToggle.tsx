@@ -1,10 +1,13 @@
+import { copy } from '@/data'
+import { fill } from '@/lib/utils'
 import { useTheme } from '@/hooks/useTheme'
 import { Icon, type IconGlyph } from '@/components/ui/Icon'
 
+/** What pressing the button does from each state. The cycle is light → dark → system. */
 const NEXT_LABEL = {
-  light: 'Switch to dark theme',
-  dark: 'Follow the system theme',
-  system: 'Switch to light theme',
+  light: copy.theme.toDark,
+  dark: copy.theme.toSystem,
+  system: copy.theme.toLight,
 } as const
 
 const GLYPH: Record<'light' | 'dark' | 'system', IconGlyph> = {
@@ -14,9 +17,9 @@ const GLYPH: Record<'light' | 'dark' | 'system', IconGlyph> = {
 }
 
 const CURRENT_LABEL = {
-  light: 'Light theme',
-  dark: 'Dark theme',
-  system: 'System theme',
+  light: copy.theme.light,
+  dark: copy.theme.dark,
+  system: copy.theme.system,
 } as const
 
 /**
@@ -33,7 +36,10 @@ export function ThemeToggle({ className }: { className?: string }) {
       type="button"
       onClick={cycle}
       title={NEXT_LABEL[choice]}
-      aria-label={`${CURRENT_LABEL[choice]}. ${NEXT_LABEL[choice]}.`}
+      aria-label={fill(copy.theme.announce, {
+        current: CURRENT_LABEL[choice],
+        next: NEXT_LABEL[choice],
+      })}
       className={
         'inline-flex size-9 items-center justify-center border border-transparent text-ink-muted transition-colors duration-150 hover:border-rule hover:text-ink ' +
         (className ?? '')

@@ -74,6 +74,13 @@ export const profile: Profile = {
   ],
 
   /**
+   * Subjects you work in, for the structured-data block on the home page that
+   * search engines read. Nobody sees this on the page — it is the
+   * machine-readable version of what `focus` above already says in prose.
+   */
+  knowsAbout: ['Nuclear engineering', 'Fusion energy', 'Physics simulation', 'Software'],
+
+  /**
    * Optional headshot. The layout is designed to look right without one, so
    * leave it out until you have a photo you like.
    *

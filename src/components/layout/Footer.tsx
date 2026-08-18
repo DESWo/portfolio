@@ -1,14 +1,8 @@
 import { Link } from 'react-router-dom'
-import { activeContactLinks, primaryNav, profile, site } from '@/data'
-import { asset } from '@/lib/utils'
+import { activeContactLinks, copy, footerNav, primaryNav, profile, site } from '@/data'
+import { asset, fill } from '@/lib/utils'
 import { Container } from '@/components/ui/Section'
 import { Icon } from '@/components/ui/Icon'
-
-const SECONDARY_LINKS = [
-  { label: 'Experience', to: '/about#experience' },
-  { label: 'Education', to: '/about#education' },
-  { label: 'Contact', to: '/about#contact' },
-]
 
 export function Footer() {
   const year = new Date().getFullYear()
@@ -29,8 +23,8 @@ export function Footer() {
             ) : null}
           </div>
 
-          <nav aria-label="Site">
-            <p className="overline mb-4">Site</p>
+          <nav aria-label={copy.chrome.navSite}>
+            <p className="overline mb-4">{copy.footer.site}</p>
             <ul className="space-y-2.5">
               {primaryNav.map((item) => (
                 <li key={item.to}>
@@ -39,7 +33,7 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
-              {SECONDARY_LINKS.map((item) => (
+              {footerNav.map((item) => (
                 <li key={item.to}>
                   <Link to={item.to} className="link text-[0.9rem]">
                     {item.label}
@@ -50,7 +44,7 @@ export function Footer() {
           </nav>
 
           <div>
-            <p className="overline mb-4">Elsewhere</p>
+            <p className="overline mb-4">{copy.footer.elsewhere}</p>
             <ul className="space-y-2.5">
               {activeContactLinks.map((link) => (
                 <li key={link.id}>
@@ -85,7 +79,7 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col gap-3 border-t border-rule pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-mono text-[0.6875rem] tracking-[0.1em] text-ink-faint uppercase">
-            © {year} {profile.name}
+            {fill(copy.footer.copyright, { year, name: profile.name })}
           </p>
           {site.footerNote ? (
             <p className="font-mono text-[0.6875rem] tracking-[0.1em] text-ink-faint uppercase">

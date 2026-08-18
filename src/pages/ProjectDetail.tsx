@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { categoryLabel, getProject, getResearch, orderedProjects } from '@/data'
+import { categoryLabel, copy, getProject, getResearch, orderedProjects } from '@/data'
 import type { Project } from '@/data'
 import { asset, cn } from '@/lib/utils'
 import { usePageMeta } from '@/hooks/usePageMeta'
@@ -28,7 +28,7 @@ export function ProjectDetail() {
   const next = index >= 0 && index < orderedProjects.length - 1 ? orderedProjects[index + 1] : undefined
 
   usePageMeta({
-    title: project?.title ?? 'Project not found',
+    title: project?.title ?? copy.project.notFound,
     description: project?.summary,
     path: `/projects/${slug ?? ''}`,
     image: project?.caseStudy?.hero?.src ?? project?.thumbnail?.src,
@@ -46,8 +46,8 @@ export function ProjectDetail() {
     .filter((r): r is NonNullable<typeof r> => Boolean(r))
 
   const externalLinks = [
-    ...(project.liveDemo ? [{ label: 'Live site', href: project.liveDemo }] : []),
-    ...(project.repo ? [{ label: 'Source code', href: project.repo }] : []),
+    ...(project.liveDemo ? [{ label: copy.project.liveSite, href: project.liveDemo }] : []),
+    ...(project.repo ? [{ label: copy.project.sourceCode, href: project.repo }] : []),
     ...(project.links ?? []),
   ]
 
@@ -63,7 +63,7 @@ export function ProjectDetail() {
             size={13}
             className="transition-transform duration-200 group-hover:-translate-x-0.5"
           />
-          All projects
+          {copy.project.back}
         </Link>
       </Container>
 
@@ -131,7 +131,7 @@ export function ProjectDetail() {
 
             {externalLinks.length ? (
               <div className="mb-8">
-                <p className="overline mb-3">Links</p>
+                <p className="overline mb-3">{copy.project.links}</p>
                 <ul className="space-y-2">
                   {externalLinks.map((link) => (
                     <li key={link.label}>
@@ -155,7 +155,7 @@ export function ProjectDetail() {
 
             {project.technologies?.length ? (
               <div className="mb-8">
-                <p className="overline mb-3">Built with</p>
+                <p className="overline mb-3">{copy.project.builtWith}</p>
                 <TagRow items={project.technologies} emphasis="quiet" />
               </div>
             ) : null}
@@ -168,7 +168,7 @@ export function ProjectDetail() {
           <div>
             {project.achievements?.length ? (
               <Reveal className="mb-14">
-                <p className="overline mb-4">Outcomes</p>
+                <p className="overline mb-4">{copy.project.outcomes}</p>
                 <ul className="divide-y divide-rule border-y border-rule">
                   {project.achievements.map((item) => (
                     <li key={item} className="flex gap-3 py-3.5">
@@ -188,16 +188,16 @@ export function ProjectDetail() {
             ) : (
               <Reveal className="prose-body">
                 <p>
-                  There is no long-form write-up for this one yet. The summary above is the whole
-                  story for now
-                  {externalLinks.length ? ', and the links have the rest' : ''}.
+                  {copy.project.noCaseStudy}
+                  {externalLinks.length ? copy.project.noCaseStudyWithLinks : ''}
+                  {copy.project.noCaseStudyEnd}
                 </p>
               </Reveal>
             )}
 
             {relatedResearch.length ? (
               <Reveal className="mt-16 border-t border-rule pt-8">
-                <p className="overline mb-4">Related research</p>
+                <p className="overline mb-4">{copy.project.relatedResearch}</p>
                 <ul className="space-y-3">
                   {relatedResearch.map((entry) => (
                     <li key={entry.slug}>
@@ -219,7 +219,7 @@ export function ProjectDetail() {
       {related.length ? (
         <Section>
           <Container>
-            <h2 className="overline mb-8">Next to read</h2>
+            <h2 className="overline mb-8">{copy.project.nextToRead}</h2>
             <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((item) => (
                 <ProjectCard key={item.slug} project={item} />
@@ -232,7 +232,7 @@ export function ProjectDetail() {
       {(previous || next) && (
         <Section padded={false} className="py-10 sm:py-12">
           <Container>
-            <nav aria-label="Project navigation" className="grid gap-px bg-rule sm:grid-cols-2">
+            <nav aria-label={copy.project.pagerLabel} className="grid gap-px bg-rule sm:grid-cols-2">
               <PagerLink project={previous} direction="previous" />
               <PagerLink project={next} direction="next" />
             </nav>
@@ -265,7 +265,7 @@ function PagerLink({
       ) : null}
       <span className={cn('min-w-0', isNext && 'sm:order-first')}>
         <span className="block font-mono text-[0.625rem] tracking-[0.12em] text-ink-faint uppercase">
-          {direction}
+          {isNext ? copy.project.next : copy.project.previous}
         </span>
         <span className="mt-1 block truncate text-[0.975rem] font-semibold text-ink transition-colors duration-200 group-hover:text-accent">
           {project.title}

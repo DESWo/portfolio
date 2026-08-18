@@ -1,4 +1,4 @@
-import { orderedProjects } from '@/data'
+import { copy, orderedProjects } from '@/data'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { Container } from '@/components/ui/Section'
 import { ActionLink } from '@/components/ui/ActionLink'
@@ -16,25 +16,22 @@ import { ProjectCard } from '@/components/project/ProjectCard'
  * app for any unknown path, and the router then decides what to show.
  */
 export function NotFound() {
-  usePageMeta({ title: 'Page not found', path: '/404' })
+  usePageMeta({ title: copy.notFound.meta.title, path: '/404' })
 
   const suggestions = orderedProjects.slice(0, 3)
 
   return (
     <Container className="py-20 sm:py-28">
-      <p className="overline mb-5">Error 404</p>
-      <h1 className="text-title font-semibold text-ink">This page does not exist</h1>
-      <p className="mt-5 max-w-lg text-lead text-ink-muted">
-        The address is wrong, or something that used to be here has moved. The projects below are
-        a reasonable place to restart.
-      </p>
+      <p className="overline mb-5">{copy.notFound.overline}</p>
+      <h1 className="text-title font-semibold text-ink">{copy.notFound.title}</h1>
+      <p className="mt-5 max-w-lg text-lead text-ink-muted">{copy.notFound.description}</p>
 
       <div className="mt-8 flex flex-wrap gap-3">
         <ActionLink href="/" variant="solid" icon="arrow-right">
-          Home
+          {copy.notFound.home}
         </ActionLink>
         <ActionLink href="/projects" variant="outline">
-          All projects
+          {copy.notFound.allProjects}
         </ActionLink>
       </div>
 

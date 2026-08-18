@@ -29,3 +29,16 @@ export const primaryNav: { label: string; to: string }[] = [
   { label: 'Engineering', to: '/engineering' },
   { label: 'About', to: '/about' },
 ]
+
+/**
+ * The extra links in the footer, under the primary ones.
+ *
+ * These point at anchors inside a page rather than at pages of their own, so
+ * they belong in the footer but not in the header. Same shape as above — add,
+ * remove or reorder freely. An empty array simply shortens the column.
+ */
+export const footerNav: { label: string; to: string }[] = [
+  { label: 'Experience', to: '/about#experience' },
+  { label: 'Education', to: '/about#education' },
+  { label: 'Contact', to: '/about#contact' },
+]

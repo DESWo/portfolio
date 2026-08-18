@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
-import { cn } from '@/lib/utils'
+import { copy } from '@/data'
+import { cn, fill } from '@/lib/utils'
 
 /**
  * A small flat label. Used for categories, technologies and research topics.
@@ -55,7 +56,7 @@ export function TagRow({
       ))}
       {hidden > 0 ? (
         <li>
-          <Tag emphasis="quiet">+{hidden}</Tag>
+          <Tag emphasis="quiet">{fill(copy.small.moreTags, { count: hidden })}</Tag>
         </li>
       ) : null}
     </ul>

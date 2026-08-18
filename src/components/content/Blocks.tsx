@@ -1,5 +1,6 @@
 import type { Block, ImageRef } from '@/data'
-import { asset, cn } from '@/lib/utils'
+import { copy } from '@/data'
+import { asset, cn, fill } from '@/lib/utils'
 
 /**
  * Draws the content blocks a case study or research page is made of.
@@ -44,7 +45,7 @@ function Caption({ number, children }: { number?: number; children?: React.React
     <figcaption className="mt-3 text-[0.8125rem] leading-relaxed text-ink-faint">
       {number !== undefined ? (
         <span className="mr-1.5 font-mono text-[0.75rem] tracking-[0.08em] text-ink-muted uppercase">
-          Fig. {number}
+          {fill(copy.article.figure, { number })}
         </span>
       ) : null}
       {children}
@@ -176,7 +177,7 @@ function BlockView({
           {block.where?.length ? (
             <dl className="mt-4 space-y-1.5 text-[0.85rem] text-ink-muted">
               <dt className="font-mono text-[0.6875rem] tracking-[0.12em] text-ink-faint uppercase">
-                where
+                {copy.article.where}
               </dt>
               {block.where.map((w, i) => (
                 <dd key={i} className="flex gap-3">
@@ -252,7 +253,7 @@ function BlockView({
           {block.caption ? (
             <figcaption className="mt-3 text-[0.8125rem] leading-relaxed text-ink-faint">
               <span className="mr-1.5 font-mono text-[0.75rem] tracking-[0.08em] text-ink-muted uppercase">
-                Table {numbering.tables.get(id)}
+                {fill(copy.article.table, { number: numbering.tables.get(id) ?? '' })}
               </span>
               {block.caption}
             </figcaption>

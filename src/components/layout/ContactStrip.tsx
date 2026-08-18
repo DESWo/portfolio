@@ -1,5 +1,5 @@
-import { activeContactLinks, profile } from '@/data'
-import { asset } from '@/lib/utils'
+import { activeContactLinks, copy, profile } from '@/data'
+import { asset, fill } from '@/lib/utils'
 import { Container, Section } from '@/components/ui/Section'
 import { Reveal } from '@/components/ui/Reveal'
 import { Icon } from '@/components/ui/Icon'
@@ -20,9 +20,9 @@ export function ContactStrip({ id = 'contact' }: { id?: string }) {
       ? [
           {
             id: 'resume',
-            label: 'Résumé',
+            label: copy.contact.resume,
             display: profile.resume.updated
-              ? `Updated ${profile.resume.updated}`
+              ? fill(copy.contact.resumeUpdated, { date: profile.resume.updated })
               : profile.resume.label,
             href: asset(profile.resume.href),
             icon: 'document' as const,
@@ -36,12 +36,9 @@ export function ContactStrip({ id = 'contact' }: { id?: string }) {
       <Container>
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:gap-16">
           <Reveal>
-            <p className="overline mb-4">Contact</p>
-            <h2 className="text-title font-semibold text-ink">Get in touch</h2>
-            <p className="mt-5 max-w-md text-lead text-ink-muted">
-              Email is the surest way to reach me. I am interested in engineering programmes,
-              research opportunities, and anyone working on the problems above.
-            </p>
+            <p className="overline mb-4">{copy.contact.overline}</p>
+            <h2 className="text-title font-semibold text-ink">{copy.contact.title}</h2>
+            <p className="mt-5 max-w-md text-lead text-ink-muted">{copy.contact.description}</p>
           </Reveal>
 
           <Reveal delay={80}>

@@ -36,7 +36,14 @@ The project appears on the home page, joins the filters on `/projects`, gets its
 own page, and can be linked to from skills and research — because every one of
 those reads from the same array.
 
-Three ideas do most of the work:
+Four ideas do most of the work:
+
+**No words live in components.** `src/data/copy.ts` holds every string the other
+data files do not — section headings, button labels, empty states, the text a
+screen reader announces. Grep the components for a sentence a visitor could read
+and you will not find one. Changing the site's voice never means opening a
+`.tsx` file, and the same rule that makes a project editable makes the wording
+around it editable too.
 
 **One registry decides order.** `src/data/projects/index.ts` exports an array.
 Its order is the display order. There is no `order: 3` field to keep in sync and
@@ -118,8 +125,11 @@ fire.
 **Checking.** `npm run check` imports the real data files and validates what
 types cannot see: cross-references between projects, research and skills; that
 every image, PDF and video path has a file behind it; that table rows match
-their column count; that slugs are unique and URL-safe. CI runs it before the
-build, so a broken reference fails the deploy rather than shipping.
+their column count; that slugs are unique and URL-safe. It also checks the copy
+file, where a type has nothing to say: a heading edited down to an empty string,
+or a `{placeholder}` the page has no value for and would render as literal
+braces. CI runs it before the build, so any of these fails the deploy rather
+than shipping.
 
 ## Deploying
 

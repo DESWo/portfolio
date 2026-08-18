@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { getProject, skillGroups } from '@/data'
+import { copy, getProject, skillGroups } from '@/data'
+import { fill } from '@/lib/utils'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { Container, Section } from '@/components/ui/Section'
 import { PageHeader } from '@/components/ui/PageHeader'
@@ -13,9 +14,8 @@ import { Reveal } from '@/components/ui/Reveal'
  */
 export function Engineering() {
   usePageMeta({
-    title: 'Engineering',
-    description:
-      'Tools, methods and subject matter Desmond Wong has used in practice, each linked to the project that demonstrates it.',
+    title: copy.engineering.meta.title,
+    description: copy.engineering.meta.description,
     path: '/engineering',
   })
 
@@ -24,10 +24,10 @@ export function Engineering() {
   return (
     <>
       <PageHeader
-        overline="Capabilities"
-        title="Engineering & tools"
-        description="What I can actually do, and where I have done it. Everything with a link next to it has a repository behind it — there are no self-assessed proficiency levels on this page because I do not think they mean anything."
-        meta={`${total} entries · ${skillGroups.length} groups`}
+        overline={copy.engineering.overline}
+        title={copy.engineering.title}
+        description={copy.engineering.description}
+        meta={fill(copy.engineering.count, { skills: total, groups: skillGroups.length })}
       />
 
       {skillGroups.map((group, groupIndex) => (

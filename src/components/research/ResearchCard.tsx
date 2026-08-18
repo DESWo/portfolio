@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import type { ResearchEntry } from '@/data'
-import { getProject } from '@/data'
+import { copy, getProject } from '@/data'
 import { StatusPill } from '@/components/ui/StatusPill'
 import { TagRow } from '@/components/ui/Tag'
 import { ActionLink } from '@/components/ui/ActionLink'
@@ -44,7 +44,7 @@ export function ResearchCard({ entry, index }: { entry: ResearchEntry; index: nu
 
           {entry.progress?.length ? (
             <div className="mt-6">
-              <p className="overline mb-3">Where it stands</p>
+              <p className="overline mb-3">{copy.researchDetail.progress}</p>
               <ul className="space-y-2">
                 {entry.progress.map((line) => (
                   <li key={line} className="relative pl-5 text-[0.875rem] leading-relaxed text-ink-muted">
@@ -64,12 +64,12 @@ export function ResearchCard({ entry, index }: { entry: ResearchEntry; index: nu
           <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
             {hasPage ? (
               <ActionLink href={`/research/${entry.slug}`} icon="arrow-right">
-                Read more
+                {copy.research.readMore}
               </ActionLink>
             ) : null}
             {entry.pdf ? (
               <ActionLink href={entry.pdf} icon="document" iconTrailing={false}>
-                PDF
+                {copy.research.pdf}
               </ActionLink>
             ) : null}
             {entry.publication?.href ? (

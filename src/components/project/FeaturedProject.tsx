@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import type { Project } from '@/data'
-import { categoryLabel } from '@/data'
+import { categoryLabel, copy } from '@/data'
 import { cn } from '@/lib/utils'
 import { Thumbnail } from '@/components/media/Thumbnail'
 import { StatusPill } from '@/components/ui/StatusPill'
@@ -104,16 +104,16 @@ export function FeaturedProject({
 
         <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
           <ActionLink href={`/projects/${project.slug}`} icon="arrow-right" variant="text">
-            {project.caseStudy ? 'Read the case study' : 'Project details'}
+            {project.caseStudy ? copy.cards.readCaseStudy : copy.cards.projectDetails}
           </ActionLink>
           {project.liveDemo ? (
             <ActionLink href={project.liveDemo} variant="text">
-              Live
+              {copy.cards.live}
             </ActionLink>
           ) : null}
           {project.repo ? (
             <ActionLink href={project.repo} variant="text">
-              Source
+              {copy.cards.source}
             </ActionLink>
           ) : null}
           <StatusPill status={project.status} />

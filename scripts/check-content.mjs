@@ -23,8 +23,16 @@ const root = resolve(here, '..')
 const publicDir = join(root, 'public')
 
 const data = await import('../src/data/index.ts')
-const { orderedProjects, visibleResearch, skillGroups, profile, contactLinks, CATEGORIES, site } =
-  data
+const {
+  orderedProjects,
+  visibleResearch,
+  skillGroups,
+  profile,
+  contactLinks,
+  CATEGORIES,
+  site,
+  copy,
+} = data
 
 const errors = []
 const warnings = []
@@ -228,6 +236,80 @@ for (const link of contactLinks) {
 
 if (site.ogImage) checkAsset('site', site.ogImage, 'ogImage')
 if (!site.url.endsWith('/')) warn('site', 'site.url should end with a trailing slash')
+
+/* -------------------------------------------------------------------- copy
+ * src/data/copy.ts is prose, so there is not much a type can say about it.
+ * The one thing that can genuinely break the page is a `{placeholder}` the
+ * component has no value for — it would render as literal braces on the live
+ * site. Below is the list of what each line is actually given. Anything else
+ * is an error, which is what makes it safe to tell someone they can move a
+ * placeholder around or delete it.
+ *
+ * If you add a placeholder to a component, add it here too.
+ */
+const PLACEHOLDERS = {
+  'chrome.homeLabel': ['name'],
+  'footer.copyright': ['year', 'name'],
+  'projects.count': ['projects', 'categories'],
+  'projects.viewTitle': ['label'],
+  'research.count.one': ['count'],
+  'research.count.other': ['count'],
+  'engineering.count': ['skills', 'groups'],
+  'researchDetail.doi': ['doi'],
+  'contact.resumeUpdated': ['date'],
+  'article.figure': ['number'],
+  'article.table': ['number'],
+  'small.moreTags': ['count'],
+  'small.plate': ['label'],
+  'theme.announce': ['current', 'next'],
+}
+
+function checkCopy(node, path = []) {
+  for (const [key, value] of Object.entries(node)) {
+    const here = [...path, key]
+    const dotted = here.join('.')
+
+    if (value && typeof value === 'object') {
+      checkCopy(value, here)
+      continue
+    }
+
+    if (typeof value !== 'string') {
+      err('copy', `${dotted} should be a line of text`)
+      continue
+    }
+
+    if (!value.trim()) {
+      err(
+        'copy',
+        `${dotted} is empty — a heading or label with no words leaves a blank space on the page`,
+      )
+    }
+
+    const allowed = PLACEHOLDERS[dotted] ?? []
+    for (const match of value.matchAll(/\{(\w+)\}/g)) {
+      if (!allowed.includes(match[1])) {
+        err(
+          'copy',
+          allowed.length
+            ? `${dotted} uses {${match[1]}}, which the page does not supply — it can only use ${allowed.map((a) => `{${a}}`).join(' or ')}`
+            : `${dotted} uses {${match[1]}}, but this line is not given any values to fill in`,
+        )
+      }
+    }
+  }
+}
+
+checkCopy(copy)
+
+// A placeholder listed above that no longer appears anywhere is dead weight in
+// this file rather than a fault on the site, so it is only worth a warning.
+for (const dotted of Object.keys(PLACEHOLDERS)) {
+  const value = dotted.split('.').reduce((o, k) => (o == null ? o : o[k]), copy)
+  if (value === undefined) {
+    warn('copy', `PLACEHOLDERS in scripts/check-content.mjs lists ${dotted}, which no longer exists`)
+  }
+}
 
 /* ------------------------------------------------------------------ report */
 const rule = '-'.repeat(70)

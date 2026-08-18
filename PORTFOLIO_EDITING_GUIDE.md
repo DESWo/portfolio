@@ -34,6 +34,7 @@ This guide assumes you know basic Git and GitHub. It assumes nothing about React
 - [Contact and social links](#contact-and-social-links)
 - [Categories](#categories)
 - [Site title, description and share image](#site-title-description-and-share-image)
+- [Headings, buttons and every other word](#headings-buttons-and-every-other-word)
 - [Deploying](#deploying)
 - [When something goes wrong](#when-something-goes-wrong)
 
@@ -75,6 +76,7 @@ src/data/
 ├── profile.ts          your name, bio, hero text, the facts panel, résumé
 ├── links.ts            email, GitHub, LinkedIn, itch.io
 ├── site.ts             browser tab title, share description, navigation
+├── copy.ts             every other word on the site — headings, buttons, labels
 ├── categories.ts       the project category vocabulary
 ├── skills.ts           the Engineering page
 ├── experience.ts       jobs, internships, programmes, leadership
@@ -613,6 +615,68 @@ Two files repeat some of this for the very first page load, before any
 JavaScript runs. If you change the title or description in `site.ts`, update
 them in `index.html` too — it is the only duplication in the project, and it
 exists so that the page has a sensible title even before the app starts.
+
+---
+
+## Headings, buttons and every other word
+
+The files above hold *your* content. `src/data/copy.ts` holds everything else
+the site says: section headings, button labels, the sentence shown when a
+category is empty, the words a screen reader announces for the menu button.
+
+Between them, **nothing a visitor can read lives inside a component**. If you
+want to change a word on this site, it is in `src/data/`. You never need to
+open a `.tsx` file.
+
+The file is grouped by where the words appear, so you can find a line by
+thinking about where you saw it:
+
+| Group | Where it shows up |
+| --- | --- |
+| `chrome`, `footer` | header, mobile menu, footer columns |
+| `home` | the hero buttons and the three section headings |
+| `projects`, `research`, `engineering`, `about` | each index page's masthead |
+| `project`, `researchDetail` | the sidebar headings on a detail page |
+| `article` | the contents rail, and "Fig. 1" / "Table 1" captions |
+| `cards` | the links at the foot of a project card |
+| `contact`, `notFound` | the contact block and the 404 page |
+| `small`, `theme` | the skip link, tag overflow, the theme button |
+
+To rename "Open questions" on the home page to "Research notes", open
+`src/data/copy.ts`, find `home.research.title`, and change the text. That is
+the whole operation.
+
+### The `{...}` bits
+
+A few lines carry a number the site works out for itself:
+
+```ts
+count: '{projects} projects · {categories} categories'
+```
+
+which renders as "9 projects · 6 categories". You can rewrite the sentence
+around a placeholder, move it, or delete it — "a lot of projects" is a valid
+thing to put there.
+
+What you cannot do is invent one. `{prjects}` would render as literal braces on
+the live site, so `npm run check` refuses it and tells you which names that
+particular line accepts:
+
+```
+ERROR    copy: projects.count uses {prjects}, which the page does not
+         supply — it can only use {projects} or {categories}
+```
+
+Lines written as `{ one: …, other: … }` pick their wording by count, so the site
+says "1 entry" and "2 entries" rather than "1 entries".
+
+### The `meta` blocks
+
+Each page has a `meta` with a `title` and a `description`. These are not shown
+on the page — they are the browser tab, the Google result, and the preview card
+when someone pastes the link into a message. They are the one piece of copy in
+this file written for someone who has not arrived yet, so they are worth a
+second pass.
 
 ---
 

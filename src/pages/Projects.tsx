@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { CATEGORIES, countByCategory, getCategory, orderedProjects, usedCategoryIds } from '@/data'
-import { cn } from '@/lib/utils'
+import { CATEGORIES, copy, countByCategory, getCategory, orderedProjects, usedCategoryIds } from '@/data'
+import { cn, fill } from '@/lib/utils'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { Container, Section } from '@/components/ui/Section'
 import { PageHeader } from '@/components/ui/PageHeader'
@@ -45,19 +45,21 @@ export function Projects() {
   }
 
   usePageMeta({
-    title: 'Projects',
-    description:
-      'Engineering projects by Desmond Wong: reactor and plasma simulations, structural solvers, and interactive technical explainers.',
+    title: copy.projects.meta.title,
+    description: copy.projects.meta.description,
     path: '/projects',
   })
 
   return (
     <>
       <PageHeader
-        overline="Work"
-        title="Projects"
-        description="Things I built to understand how something works. Most have a case study going through the model, the assumptions and the trade-offs."
-        meta={`${orderedProjects.length} projects · ${available.length} categories`}
+        overline={copy.projects.overline}
+        title={copy.projects.title}
+        description={copy.projects.description}
+        meta={fill(copy.projects.count, {
+          projects: orderedProjects.length,
+          categories: available.length,
+        })}
       />
 
       <Container>
@@ -69,7 +71,7 @@ export function Projects() {
               row scroll sideways instead. */}
           <div className="-mx-1 flex flex-1 flex-wrap gap-1 px-1 py-0.5 max-sm:flex-nowrap max-sm:overflow-x-auto">
             <FilterButton
-              label="All"
+              label={copy.projects.all}
               count={orderedProjects.length}
               active={!active}
               onClick={() => setParam('category', null)}
@@ -85,15 +87,19 @@ export function Projects() {
             ))}
           </div>
 
-          <div className="flex shrink-0 items-center gap-0.5" role="group" aria-label="Layout">
+          <div
+            className="flex shrink-0 items-center gap-0.5"
+            role="group"
+            aria-label={copy.projects.layoutLabel}
+          >
             <ViewButton
-              label="Grid"
+              label={copy.projects.grid}
               glyph="grid"
               active={view === 'grid'}
               onClick={() => setParam('view', null)}
             />
             <ViewButton
-              label="Index"
+              label={copy.projects.index}
               glyph="list"
               active={view === 'index'}
               onClick={() => setParam('view', 'index')}
@@ -111,9 +117,7 @@ export function Projects() {
       <Section divider={false} padded={false} className="pt-10 pb-20 sm:pt-12 sm:pb-24">
         <Container>
           {filtered.length === 0 ? (
-            <p className="py-16 text-center text-ink-muted">
-              No projects in this category yet.
-            </p>
+            <p className="py-16 text-center text-ink-muted">{copy.projects.empty}</p>
           ) : view === 'grid' ? (
             <div className="grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
               {filtered.map((project, i) => (
@@ -180,13 +184,13 @@ function ViewButton({
       type="button"
       onClick={onClick}
       aria-pressed={active}
-      title={`${label} view`}
+      title={fill(copy.projects.viewTitle, { label })}
       className={cn(
         'inline-flex size-8 items-center justify-center border transition-colors duration-150',
         active ? 'border-rule-strong text-ink' : 'border-transparent text-ink-faint hover:text-ink',
       )}
     >
-      <Icon name={glyph} size={15} title={`${label} view`} />
+      <Icon name={glyph} size={15} title={fill(copy.projects.viewTitle, { label })} />
     </button>
   )
 }

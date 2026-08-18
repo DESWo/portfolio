@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { CaseStudySection } from '@/data'
+import { copy } from '@/data'
 import { cn, slugify } from '@/lib/utils'
 import { Reveal } from '@/components/ui/Reveal'
 import { BlockList, createNumbering, numberBlocks } from './Blocks'
@@ -73,8 +74,8 @@ export function ContentsRail({
   if (sections.length < 2) return null
 
   return (
-    <nav aria-label="Contents" className={className}>
-      <p className="overline mb-4">Contents</p>
+    <nav aria-label={copy.article.contents} className={className}>
+      <p className="overline mb-4">{copy.article.contents}</p>
       <ol className="space-y-0.5">
         {sections.map((section, i) => {
           const isActive = active === section.anchor

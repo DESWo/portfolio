@@ -1,4 +1,5 @@
-import { visibleResearch } from '@/data'
+import { copy, visibleResearch } from '@/data'
+import { plural } from '@/lib/utils'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { Container, Section } from '@/components/ui/Section'
 import { PageHeader } from '@/components/ui/PageHeader'
@@ -6,22 +7,19 @@ import { ResearchCard } from '@/components/research/ResearchCard'
 
 export function Research() {
   usePageMeta({
-    title: 'Research',
-    description:
-      'Technical writing and investigations by Desmond Wong, covering fusion reactor architectures, plasma physics and nuclear energy.',
+    title: copy.research.meta.title,
+    description: copy.research.meta.description,
     path: '/research',
   })
 
   return (
     <>
       <PageHeader
-        overline="Writing & investigation"
-        title="Research"
-        description="Work in progress as much as work finished. Each entry says exactly what stage it is at, and nothing here claims a result it does not have."
+        overline={copy.research.overline}
+        title={copy.research.title}
+        description={copy.research.description}
         meta={
-          visibleResearch.length
-            ? `${visibleResearch.length} ${visibleResearch.length === 1 ? 'entry' : 'entries'}`
-            : undefined
+          visibleResearch.length ? plural(visibleResearch.length, copy.research.count) : undefined
         }
       />
 
@@ -29,7 +27,7 @@ export function Research() {
         <Container>
           {visibleResearch.length === 0 ? (
             <p className="border-y border-rule py-16 text-center text-ink-muted">
-              Nothing published here yet.
+              {copy.research.empty}
             </p>
           ) : (
             <div className="border-t border-rule pt-10">

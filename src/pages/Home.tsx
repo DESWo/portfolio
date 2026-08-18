@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import {
+  activeContactLinks,
+  copy,
   featuredProjects,
   orderedProjects,
   profile,
@@ -21,6 +23,12 @@ export function Home() {
   const featured = featuredProjects.length ? featuredProjects : orderedProjects.slice(0, 3)
   const research = visibleResearch.slice(0, 3)
 
+  // The structured-data block is built from src/data/links.ts rather than
+  // written out here, so an address changed in one place cannot leave a stale
+  // copy of itself behind in the page's metadata.
+  const email = activeContactLinks.find((l) => l.href.startsWith('mailto:'))?.href
+  const sameAs = activeContactLinks.filter((l) => /^https?:/i.test(l.href)).map((l) => l.href)
+
   usePageMeta({
     path: '/',
     jsonLd: {
@@ -29,9 +37,9 @@ export function Home() {
       name: profile.name,
       description: profile.role,
       url: site.url,
-      email: 'wongdesmond414@gmail.com',
-      sameAs: ['https://github.com/DESWo'],
-      knowsAbout: ['Nuclear engineering', 'Fusion energy', 'Physics simulation', 'Software'],
+      ...(email ? { email: email.replace(/^mailto:/, '') } : {}),
+      ...(sameAs.length ? { sameAs } : {}),
+      ...(profile.knowsAbout?.length ? { knowsAbout: profile.knowsAbout } : {}),
     },
   })
 
@@ -42,7 +50,7 @@ export function Home() {
       {profile.focus?.length ? (
         <Section id="focus">
           <Container>
-            <SectionHeader overline="What I work on" title="Three things, mostly" />
+            <SectionHeader overline={copy.home.focus.overline} title={copy.home.focus.title} />
             <div className="grid sm:grid-cols-3">
               {profile.focus.map((item, i) => (
                 <Reveal
@@ -67,12 +75,12 @@ export function Home() {
       <Section id="work">
         <Container>
           <SectionHeader
-            overline="Selected work"
-            title="Projects"
-            description="Each one started as something I wanted to understand. The case studies go through the model, the assumptions, and what I would do differently."
+            overline={copy.home.work.overline}
+            title={copy.home.work.title}
+            description={copy.home.work.description}
             action={
               <ActionLink href="/projects" icon="arrow-right">
-                All projects
+                {copy.home.work.action}
               </ActionLink>
             }
           />
@@ -93,12 +101,12 @@ export function Home() {
         <Section id="research">
           <Container>
             <SectionHeader
-              overline="Research"
-              title="Open questions"
-              description="Technical writing and investigations, including work that has not produced a result yet. The status next to each one is accurate."
+              overline={copy.home.research.overline}
+              title={copy.home.research.title}
+              description={copy.home.research.description}
               action={
                 <ActionLink href="/research" icon="arrow-right">
-                  All research
+                  {copy.home.research.action}
                 </ActionLink>
               }
             />

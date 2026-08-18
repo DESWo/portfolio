@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { getProject, getResearch } from '@/data'
-import { asset } from '@/lib/utils'
+import { copy, getProject, getResearch } from '@/data'
+import { asset, fill } from '@/lib/utils'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { Container } from '@/components/ui/Section'
 import { Reveal } from '@/components/ui/Reveal'
@@ -22,7 +22,7 @@ export function ResearchDetail() {
   )
 
   usePageMeta({
-    title: entry?.title ?? 'Research not found',
+    title: entry?.title ?? copy.researchDetail.notFound,
     description: entry?.abstract,
     path: `/research/${slug ?? ''}`,
     type: 'article',
@@ -44,7 +44,7 @@ export function ResearchDetail() {
             size={13}
             className="transition-transform duration-200 group-hover:-translate-x-0.5"
           />
-          All research
+          {copy.researchDetail.back}
         </Link>
       </Container>
 
@@ -64,18 +64,18 @@ export function ResearchDetail() {
         <div className="grid gap-12 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-16">
           <aside className="lg:sticky lg:top-24 lg:self-start">
             <div className="mb-8">
-              <p className="overline mb-3">Topics</p>
+              <p className="overline mb-3">{copy.researchDetail.topics}</p>
               <TagRow items={entry.topics} emphasis="quiet" />
             </div>
 
             {(entry.pdf || entry.publication || entry.doi || project) && (
               <div className="mb-8">
-                <p className="overline mb-3">Links</p>
+                <p className="overline mb-3">{copy.researchDetail.links}</p>
                 <ul className="space-y-2">
                   {entry.pdf ? (
                     <li>
                       <ActionLink href={entry.pdf} className="text-[0.875rem]">
-                        Download PDF
+                        {copy.researchDetail.downloadPdf}
                       </ActionLink>
                     </li>
                   ) : null}
@@ -89,7 +89,7 @@ export function ResearchDetail() {
                   {entry.doi ? (
                     <li>
                       <ActionLink href={`https://doi.org/${entry.doi}`} className="text-[0.875rem]">
-                        DOI {entry.doi}
+                        {fill(copy.researchDetail.doi, { doi: entry.doi })}
                       </ActionLink>
                     </li>
                   ) : null}
@@ -115,13 +115,13 @@ export function ResearchDetail() {
 
           <div>
             <Reveal className="mb-12">
-              <p className="overline mb-4">Abstract</p>
+              <p className="overline mb-4">{copy.researchDetail.abstract}</p>
               <p className="prose-body">{entry.abstract}</p>
             </Reveal>
 
             {entry.progress?.length ? (
               <Reveal className="mb-14">
-                <p className="overline mb-4">Where it stands</p>
+                <p className="overline mb-4">{copy.researchDetail.progress}</p>
                 <ul className="divide-y divide-rule border-y border-rule">
                   {entry.progress.map((line) => (
                     <li key={line} className="py-3.5 text-[0.925rem] leading-relaxed text-ink-muted">
@@ -159,7 +159,7 @@ export function ResearchDetail() {
 
             {entry.citation ? (
               <Reveal className="mt-16 border-t border-rule pt-8">
-                <p className="overline mb-3">Cite as</p>
+                <p className="overline mb-3">{copy.researchDetail.citation}</p>
                 <p className="border-l-2 border-rule-strong bg-paper-sunken px-5 py-4 font-mono text-[0.8125rem] leading-relaxed text-ink-muted">
                   {entry.citation}
                 </p>

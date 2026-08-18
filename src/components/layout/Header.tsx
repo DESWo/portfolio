@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { primaryNav, profile, site } from '@/data'
-import { asset, cn } from '@/lib/utils'
+import { copy, primaryNav, profile, site } from '@/data'
+import { asset, cn, fill } from '@/lib/utils'
 import { Container } from '@/components/ui/Section'
 import { Icon } from '@/components/ui/Icon'
 import { ThemeToggle } from './ThemeToggle'
@@ -75,17 +75,17 @@ export function Header() {
           <Link
             to="/"
             className="group flex items-baseline gap-2.5 whitespace-nowrap"
-            aria-label={`${profile.name} — home`}
+            aria-label={fill(copy.chrome.homeLabel, { name: profile.name })}
           >
             <span className="text-[0.975rem] font-semibold tracking-[-0.01em] text-ink">
               {profile.name}
             </span>
             <span className="hidden font-mono text-[0.6875rem] tracking-[0.12em] text-ink-faint uppercase sm:inline">
-              {site.shortName === profile.name ? 'Portfolio' : site.shortName}
+              {site.shortName === profile.name ? copy.chrome.badge : site.shortName}
             </span>
           </Link>
 
-          <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
+          <nav aria-label={copy.chrome.navPrimary} className="hidden items-center gap-7 md:flex">
             {primaryNav.map((item) => (
               <NavLink key={item.to} to={item.to} className={navLinkClass}>
                 {({ isActive }) => (
@@ -112,7 +112,7 @@ export function Header() {
                 rel="noopener noreferrer"
                 className="hidden items-center gap-2 border border-rule-strong px-3.5 py-2 text-[0.8125rem] text-ink transition-colors duration-150 hover:border-accent hover:text-accent sm:inline-flex"
               >
-                Résumé
+                {copy.chrome.resume}
                 <Icon name="arrow-up-right" size={13} />
               </a>
             ) : null}
@@ -125,7 +125,7 @@ export function Header() {
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-controls="site-menu"
-              aria-label={open ? 'Close menu' : 'Open menu'}
+              aria-label={open ? copy.chrome.menuClose : copy.chrome.menuOpen}
               className="inline-flex size-9 items-center justify-center border border-transparent text-ink transition-colors duration-150 hover:border-rule md:hidden"
             >
               <Icon name={open ? 'close' : 'menu'} size={19} />
@@ -142,7 +142,7 @@ export function Header() {
         className="border-t border-rule bg-paper md:hidden"
       >
         <Container className="py-4">
-          <nav aria-label="Primary (mobile)">
+          <nav aria-label={copy.chrome.navPrimaryMobile}>
             <ul>
               {primaryNav.map((item) => (
                 <li key={item.to} className="border-b border-rule last:border-b-0">
@@ -169,7 +169,7 @@ export function Header() {
               rel="noopener noreferrer"
               className="mt-4 inline-flex w-full items-center justify-center gap-2 border border-rule-strong px-4 py-3 text-[0.95rem] text-ink"
             >
-              Résumé
+              {copy.chrome.resume}
               <Icon name="arrow-up-right" size={15} />
             </a>
           ) : null}

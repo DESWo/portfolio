@@ -1,4 +1,4 @@
-import { activeContactLinks, profile } from '@/data'
+import { activeContactLinks, copy, profile } from '@/data'
 import { asset } from '@/lib/utils'
 import { Container } from '@/components/ui/Section'
 import { ActionLink } from '@/components/ui/ActionLink'
@@ -31,7 +31,7 @@ export function Hero() {
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <ActionLink href="/projects" variant="solid" icon="arrow-right">
-              View projects
+              {copy.home.viewProjects}
             </ActionLink>
             {profile.resume ? (
               <ActionLink href={profile.resume.href} variant="outline" icon="document" iconTrailing={false}>
@@ -39,7 +39,7 @@ export function Hero() {
               </ActionLink>
             ) : null}
             <ActionLink href="/about" variant="outline">
-              About
+              {copy.home.about}
             </ActionLink>
           </div>
         </div>

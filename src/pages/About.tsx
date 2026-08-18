@@ -1,4 +1,4 @@
-import { certifications, education, experience, profile } from '@/data'
+import { certifications, copy, education, experience, profile } from '@/data'
 import { asset } from '@/lib/utils'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { Container, Section, SectionHeader } from '@/components/ui/Section'
@@ -17,14 +17,14 @@ import { ContactStrip } from '@/components/layout/ContactStrip'
  */
 export function About() {
   usePageMeta({
-    title: 'About',
+    title: copy.about.meta.title,
     description: profile.about[0] ?? profile.intro,
     path: '/about',
   })
 
   return (
     <>
-      <PageHeader overline="About" title={profile.name} description={profile.role} />
+      <PageHeader overline={copy.about.overline} title={profile.name} description={profile.role} />
 
       <Container className="pb-16 sm:pb-20">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-16">
@@ -81,7 +81,7 @@ export function About() {
       {experience.length ? (
         <Section id="experience" className="scroll-mt-24">
           <Container>
-            <SectionHeader overline="Record" title="Experience" />
+            <SectionHeader overline={copy.about.recordOverline} title={copy.about.experience} />
             <ol className="border-t border-rule">
               {experience.map((item, i) => (
                 <Reveal as="li" key={item.id} delay={Math.min(i, 3) * 60} className="border-b border-rule">
@@ -152,7 +152,7 @@ export function About() {
       {education.length ? (
         <Section id="education" className="scroll-mt-24">
           <Container>
-            <SectionHeader overline="Record" title="Education" />
+            <SectionHeader overline={copy.about.recordOverline} title={copy.about.education} />
             <ol className="border-t border-rule">
               {education.map((item) => (
                 <Reveal as="li" key={item.id} className="border-b border-rule">
@@ -209,7 +209,7 @@ export function About() {
       {certifications.length ? (
         <Section id="certifications" className="scroll-mt-24">
           <Container>
-            <SectionHeader overline="Record" title="Certifications" />
+            <SectionHeader overline={copy.about.recordOverline} title={copy.about.certifications} />
             <ul className="grid sm:grid-cols-2 lg:grid-cols-3">
               {certifications.map((item) => (
                 <li key={item.id} className="p-5 shadow-[0_0_0_1px_var(--rule)]">
@@ -221,7 +221,7 @@ export function About() {
                   </p>
                   {item.href ? (
                     <ActionLink href={item.href} className="mt-3 text-[0.8125rem]">
-                      Verify
+                      {copy.about.verify}
                     </ActionLink>
                   ) : null}
                 </li>

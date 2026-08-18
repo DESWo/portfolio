@@ -323,6 +323,12 @@ export interface Profile {
   photo?: ImageRef
   /** Focus areas listed on the home page. */
   focus?: { title: string; description: string }[]
+  /**
+   * Subjects you work in, for the structured-data block that search engines
+   * read. Never shown on the page — it is the machine-readable version of
+   * what the home page already says in prose.
+   */
+  knowsAbout?: string[]
   /** Set to null until a real PDF exists in public/resume/. */
   resume: { href: string; label: string; updated?: string } | null
 }

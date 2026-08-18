@@ -1,4 +1,5 @@
-import { hash01 } from '@/lib/utils'
+import { copy } from '@/data'
+import { fill, hash01 } from '@/lib/utils'
 
 /**
  * The drawing used when a project has no screenshot yet.
@@ -276,7 +277,7 @@ export function GeneratedPlate({
       viewBox={`0 0 ${W} ${H}`}
       className={className}
       role="img"
-      aria-label={label ? `${label} — placeholder technical plate` : 'Placeholder technical plate'}
+      aria-label={label ? fill(copy.small.plate, { label }) : copy.small.plateUntitled}
       preserveAspectRatio="xMidYMid slice"
     >
       <rect width={W} height={H} fill="var(--paper-sunken)" />

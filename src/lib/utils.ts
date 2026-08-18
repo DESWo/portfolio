@@ -55,3 +55,29 @@ export function hash01(input: string, salt = 0): number {
   }
   return ((h >>> 0) % 100000) / 100000
 }
+
+/**
+ * Fill the `{placeholder}` slots in a line of copy from src/data/copy.ts.
+ *
+ *   fill('{projects} projects · {categories} categories', { projects: 9, categories: 6 })
+ *     -> '9 projects · 6 categories'
+ *
+ * A placeholder with no value is left exactly as written rather than blanked,
+ * so a typo shows up as `{prjects}` and is obvious. `npm run check` fails on
+ * one of those, so it never reaches the live site.
+ */
+export function fill(template: string, values: Record<string, string | number>): string {
+  return template.replace(/\{(\w+)\}/g, (whole, key: string) =>
+    key in values ? String(values[key]) : whole,
+  )
+}
+
+/**
+ * Pick the singular or plural wording for a count, then fill `{count}` in it.
+ *
+ *   plural(1, { one: '{count} entry', other: '{count} entries' })  -> '1 entry'
+ *   plural(4, { one: '{count} entry', other: '{count} entries' })  -> '4 entries'
+ */
+export function plural(count: number, forms: { one: string; other: string }): string {
+  return fill(count === 1 ? forms.one : forms.other, { count })
+}
